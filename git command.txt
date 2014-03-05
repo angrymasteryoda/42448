@@ -1,0 +1,3 @@
+git config --global user.email "rishermichael@gmail.com"
+git config --global user.name "Michael Risher"
+git clone https://github.com/Riverside-City-College-Computer-Science/CSC17a_Spring_2014_42448
