@@ -23,11 +23,15 @@ void p3_12();
 void p4_10();
 void p5_10();
 void p7_7();
+void p8_1();
 void fillN7(float sales[][NUM7], int s);
 void printN7(float sales[][NUM7], int s);
+void bubbleSort( int arr[], int s );
+int binarySearch( int arr[], int size, int val );
+void swap1( int &n1, int &n2 );
 
 int main( int argc, char** argv ) {
-    p4_10();
+    p8_1();
     return 0;
 }
 
@@ -177,4 +181,59 @@ void printN7(float sales[][NUM7], int s){
         cout<<"Total sales for division "<<i+1<<" is $"<<sum[i]<<endl;
     }
 
+}
+
+void p8_1(){
+    const int size = 18;
+    int accounts[size] = {5658845, 8080152, 1005231, 4520125, 4562555, 6545231, 7895122, 5552012, 3852085, 8777541, 5050552, 7576651, 8451277, 7825877, 7881200, 1302850, 1250255, 4581002};
+    cout << "enter a account number\n";
+    int testaccount;
+    cin >> testaccount;
+    bubbleSort( accounts, size );
+    if ( binarySearch( accounts , size, testaccount ) != -1 ) {
+        cout << testaccount << " was a valid account number\n";
+    }
+    else{
+        cout << testaccount << " was not a valid account number\n";
+    }
+}
+
+void bubbleSort( int arr[], int s ) {
+    bool swaped = false;
+
+    do {
+        swaped = false;
+        for ( int i = 0; i < s - 1; i++ ) {
+            if ( *(arr+i) > *(arr+(i + 1)) ) {
+                swap( *(arr + i), *(arr + (i + 1) ) );
+                swaped = true;
+            }
+
+        }
+    }    while ( swaped );
+}
+
+int binarySearch( int arr[], int size, int val ) {
+    int first = 0, last = size - 1;
+    int mid;
+
+    bool found = false;
+
+    while ( !found && first <= last ) {
+        mid = ( first + last ) / 2;
+        if ( arr[mid] == val ) {
+            found = true;
+            return mid;
+        } else if ( arr[mid] > val ) {
+            last = mid - 1;
+        } else {
+            first = mid + 1;
+        }
+    }
+    return -1;
+}
+void swap1( int &n1, int &n2 ) {
+    n1 ^= n2;
+    n2 = n1 ^ n2;
+    n1 ^= n2;
 }
