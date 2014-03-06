@@ -30,8 +30,33 @@ void bubbleSort( int arr[], int s );
 int binarySearch( int arr[], int size, int val );
 void swap1( int &n1, int &n2 );
 
+void Menu()
+    {
+           cout<<"Type 1-5 for problem 1-5"<<endl;
+           cout<<"Type 6 to exit \n"<<endl;
+    }
+int getN()
+    {
+           int inN;
+		   cin>>inN;
+           return inN;
+    }
+
 int main( int argc, char** argv ) {
-    p8_1();
+    int inN;
+        do {
+            Menu();
+            inN=getN();
+            switch(inN){
+                case 1:    p3_12();break;
+                case 2:    p4_10();break;
+                case 3:    p5_10();break;
+                case 4:    p7_7();break;
+                case 5:    p8_1();break;
+                default:   cout<<"done\n";
+            }
+        }
+        while( inN < 6 );
     return 0;
 }
 
