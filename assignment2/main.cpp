@@ -55,7 +55,7 @@ void meanMedianMode(){
     cout << "Mode:\n";
     
     
-    printArr( sorted, SIZE, 10 );
+    //printArr( sorted, SIZE, 10 );
     mode( sorted, SIZE );
     //cout<<numModes(sorted, SIZE);        
     
@@ -99,7 +99,15 @@ float median( int *a, int size ){
 
 void mode( int *a, int size){
     int *b = makeModeArray(a, size);
-    printArr(b, b[0]+2);
+    //printArr(b, b[0]+2);
+    cout << "\tMax freq: " << b[1] << endl;
+    cout << "\tNum of modes: " << b[0] << endl;
+    cout << "\tModes: ";
+    for( int i = 2; i < b[0] + 2; i++ ){
+        cout << b[i];
+        if ( i <= b[0] ) { cout << ", "; }
+        else { cout << endl; }
+    }
     destroy(b);
 }
 
