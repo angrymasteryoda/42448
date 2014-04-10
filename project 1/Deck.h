@@ -10,13 +10,14 @@
 
 class Deck {
 public:
-    Deck();
+    Deck( int = 52 );
     Deck(const Deck& orig);
     virtual ~Deck();
+    int getDeckSize();
 private:
     Card *deck;
     int deckSize;
-    Card getCard();
+    void setDeckSize( int );
 };
 
 #endif	/* DECK_H */
