@@ -16,6 +16,7 @@ public:
     int getFace();
     void setSuit( int );
     void setFace( int );
+    void printCard( Card );
 private:
     int suit;
     int face;

@@ -7,69 +7,39 @@
 
 #include <cstdlib>
 #include <iostream>
-#include <string>
-#include <sstream>
+#include <ctime>
 
-#include "Card.h"
+#include "Game.h"
 #include "Deck.h"
+#include "Card.h"
 
 using namespace std;
 
-void printCard( Card c );
 void destroy( Card* );
 
 int main( int argc, char** argv ) {
+    srand( time( NULL ) );
     
-    Deck deck( 52 );
+    Game game();
+    //TODO fix this error main.cpp:25: error: request for member `start' in `game', which is of non-class type `Game ()()'
+    //game.start();
+    
+    Deck deck( 54 );
+    //deck.shuffle( 10 );
     Card* cards = deck.getDeck();
+//    deck.printDeck( 4 );
+//    cout << endl;
+
+    int players = 2;
+    //deal to players
     for( int i = 0; i < deck.getSize(); i++ ){
-        printCard( cards[i] );
-        cout << endl;
+        
     }
-    cout << endl;
+    
+    destroy( cards );
     return 0;
 }
 
-void printCard( Card c ){
-    string face;
-    switch( c.getFace() ){
-        case 0:
-            face = "An Ace";
-            break;
-        case 10:
-            face = "Jack";
-            break;
-        case 11:
-            face = "Queen";
-            break;
-        case 12:
-            face = "King";
-            break;
-        default:
-            //convert int to string
-            stringstream out;
-            out << ( c.getFace() + 1 );
-            face = out.str();
-            break;
-    }
-    string suit;
-    switch ( c.getSuit() ){
-        case 0:
-            suit = "Hearts";
-            break;
-        case 1:
-            suit = "Diamonds";
-            break;
-        case 2:
-            suit = "Clubs";
-            break;
-        case 3:
-            suit = "Spades";
-            break;
-    }
-    cout << face + " of " + suit;
-}
-
-void Destroy( Card* c ){
+void destroy( Card* c ){
     delete [] c;
 }
