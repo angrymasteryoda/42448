@@ -8,7 +8,12 @@
 #ifndef GAME_H
 #define	GAME_H
 
-class Game {
+
+class Game{
+private:
+    int players;
+    bool isRunning;
+    void setPlayers(int);
 public:
     Game();
     ~Game();
@@ -16,13 +21,8 @@ public:
     bool getIsRunning();
     void setIsRunning( bool );
     void start();
-    void stop();
+    void stp(){};
     void run();
-private:
-    int players;
-    bool isRunning;
-    void setPlayers( int );
 };
 
 #endif	/* GAME_H */
-

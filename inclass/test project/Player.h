@@ -14,6 +14,7 @@
 struct Player{
     Card* hand;
     int currentCard;
+    int size;
 };
 
 #endif	/* PLAYER_H */

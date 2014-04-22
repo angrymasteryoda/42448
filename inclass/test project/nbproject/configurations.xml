@@ -16,6 +16,7 @@
       <itemPath>Card.h</itemPath>
       <itemPath>Deck.cpp</itemPath>
       <itemPath>Deck.h</itemPath>
+      <itemPath>Player.h</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

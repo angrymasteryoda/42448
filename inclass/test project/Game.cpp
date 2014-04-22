@@ -26,9 +26,9 @@ void Game::start(){
     //run();
 }
 
-void Game::stop(){
-    setIsRunning( false );
-}
+//void Game::stop(){
+//    this->setIsRunning( false );
+//}
 
 void Game::run(){
     //set up the pre loop stuff like deck and dealing cards
@@ -73,4 +73,3 @@ bool Game::getIsRunning(){
 void Game::setIsRunning( bool b ){
     isRunning = b;
 }
-

@@ -14,6 +14,10 @@
 
 using namespace std;
 
+/**
+ * constructor
+ * @param size size of the deck
+ */
 Deck::Deck( int size ) {
     setCurrentCard( 0 );
     setSize( size );
@@ -24,6 +28,9 @@ Deck::~Deck( ) {
     delete [] deck;
 }
 
+/**
+ * fill the deck with default card suits and based on a ace to king
+ */
 void Deck::fillDeck(){
     int size = getSize();
     deck = new Card[ size ];
@@ -44,10 +51,17 @@ void Deck::fillDeck(){
     }
 }
 
+/**
+ * shuffle the deck 6 times
+ */
 void Deck::shuffle(){
     shuffle( 6 );
 }
 
+/**
+ * Shuffle the deck x times
+ * @param times
+ */
 void Deck::shuffle( int times ){
     setCurrentCard( 0 );
     for( int x = 0; x < times; x++ ){
@@ -60,11 +74,20 @@ void Deck::shuffle( int times ){
     }
 }
 
+/**
+ * deal a single card
+ * @return Card
+ */
 Card Deck::deal(){
     if ( currentCard < getSize() ){
         return deck[currentCard++];
     }   
 }
+
+/**
+ * prints out the entire deck in plain text
+ * @param p cards per line
+ */
 void Deck::printDeck( int p ){
     for( int i = 0; i < getSize(); i++ ){
         deck->printCard( deck[i] );
@@ -74,6 +97,8 @@ void Deck::printDeck( int p ){
         }
     }
 }
+
+//getters setters
 int Deck::getSize(){
     return size;
 }

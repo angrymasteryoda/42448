@@ -12,34 +12,45 @@
 #include "Game.h"
 #include "Deck.h"
 #include "Card.h"
+#include "Player.h"
 
 using namespace std;
 
 void destroy( Card* );
+void destroy( Player* );
 
 int main( int argc, char** argv ) {
-    srand( time( NULL ) );
+    //srand( time( NULL ) );
     
-    Game game();
+    Game me;
     //TODO fix this error main.cpp:25: error: request for member `start' in `game', which is of non-class type `Game ()()'
-    //game.start();
+    me.stp();
     
-    Deck deck( 54 );
+//    Deck deck( 54 );
     //deck.shuffle( 10 );
-    Card* cards = deck.getDeck();
+//    Card* cards = deck.getDeck();
 //    deck.printDeck( 4 );
 //    cout << endl;
 
-    int players = 2;
-    //deal to players
-    for( int i = 0; i < deck.getSize(); i++ ){
-        
-    }
-    
-    destroy( cards );
+//    int p = 2;
+//    //deal to players
+//    Player* players = new Player[p];
+//    int j = 0;
+//    for( int i = 0; i < p; i++ ){
+//        players[i].hand = new Card[ ( deck.getSize() / p ) ];
+//    }
+//    for( int i = 0; i < deck.getSize(); i++ ){
+//        players[i].handcards[i];
+//    }
+//    
+//    destroy( cards );
+//    destroy( players );
     return 0;
 }
 
 void destroy( Card* c ){
     delete [] c;
+}
+void destroy( Player* p){
+    delete [] p;
 }
