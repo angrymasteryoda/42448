@@ -1,0 +1,8 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=41400000
+eax=00000000 ebx=0027AC90 ecx=00000000 edx=00000000 esi=00000000 edi=0027CD78
+ebp=20058384 esp=0027AC70 program=C:\Users\Michael\Desktop\Michael Stuff\school\cis 17a\42448\inclass\Midterm\dist\Debug\Cygwin-Windows\midterm.exe, pid 9516, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+20058384  41400000  (0000008B, 00000000, 00000000, 00000000)
+End of stack trace
