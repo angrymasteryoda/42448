@@ -2,7 +2,7 @@
  * File:   Game.h
  * Author: Michael
  *
- * Created on April 21, 2014, 8:14 AM
+ * Created on April 24, 2014, 11:22 AM
  */
 
 #ifndef GAME_H
@@ -21,8 +21,7 @@ public:
     bool getIsRunning();
     void setIsRunning( bool );
     void start();
-    void stp(){};
+    void stop();
     void run();
 };
-
 #endif	/* GAME_H */

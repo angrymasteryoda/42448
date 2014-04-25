@@ -24,7 +24,7 @@ int main( int argc, char** argv ) {
     
     Game me;
     //TODO fix this error main.cpp:25: error: request for member `start' in `game', which is of non-class type `Game ()()'
-    me.stp();
+    me.start();
     
 //    Deck deck( 54 );
     //deck.shuffle( 10 );

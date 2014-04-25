@@ -189,10 +189,11 @@ with respect to the employee as a check and the process starts all over
 again until you input an invalid rate of pay or hours worked.  This
 means a negative rate of pay or negative number of hours worked is
 not acceptable. */
-    Employee* employees;
+    
     int count = 0;
     cout << "enter the number of employees\n";
     cin >> count;
+    Employee* employees = new Employee[count];
     for( int i = 0; i < count; i++ ){
         cout << "Enter an employees name (no longer than 50)\n";
         cin.ignore();
@@ -225,7 +226,7 @@ not acceptable. */
     }
     
     print( employees, count );
-    //destroy( employees );
+    destroy( employees );
 }
 
 void problem3(){

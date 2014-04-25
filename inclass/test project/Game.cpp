@@ -1,8 +1,8 @@
 /* 
  * File:   Game.cpp
  * Author: Michael
- * 
- * Created on April 21, 2014, 8:14 AM
+ *
+ * Created on April 24, 2014, 11:26 AM
  */
 #include <iostream>
 #include <cstdlib>
@@ -23,12 +23,12 @@ Game::~Game( ) {
 
 void Game::start(){
     setIsRunning( true );
-    //run();
+    run();
 }
 
-//void Game::stop(){
-//    this->setIsRunning( false );
-//}
+void Game::stop(){
+    setIsRunning( false );
+}
 
 void Game::run(){
     //set up the pre loop stuff like deck and dealing cards

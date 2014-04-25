@@ -16,6 +16,8 @@
       <itemPath>Card.h</itemPath>
       <itemPath>Deck.cpp</itemPath>
       <itemPath>Deck.h</itemPath>
+      <itemPath>Game.cpp</itemPath>
+      <itemPath>Game.h</itemPath>
       <itemPath>Player.h</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
