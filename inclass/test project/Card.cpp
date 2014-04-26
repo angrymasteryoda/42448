@@ -78,7 +78,66 @@ void Card::printCard( Card c ){
         cout << face;
     }
     else{
-        cout << face + " of " + suit;
+        cout << face << " of " << suit;
+    }
+}
+/**
+ * prints out the abbrevation of the card eg 10♠ or 10H
+ * @param c
+ * @param sym can print symbols
+ * @return 
+ */
+string Card::printAbbrev( Card c, bool sym ){
+    string face;
+    bool isJoker = false;
+    switch( c.getFace() ){
+        case 0:
+            face = "A";
+            break;
+        case 10:
+            face = "J";
+            break;
+        case 11:
+            face = "Q";
+            break;
+        case 12:
+            face = "K";
+            break;
+        case 13:
+            isJoker = true;
+            face = "Joker";
+            break;
+        default:
+            //convert int to string
+            stringstream out;
+            out << ( c.getFace() + 1 );
+            face = out.str();
+            break;
+    }
+    string suit;
+    switch ( c.getSuit() ){
+        case 0:
+            suit = sym ? "\u2665" : "H";
+            break;
+        case 1:
+            suit = sym ? "\u2666" : "D";
+            break;
+        case 2:
+            suit = sym ? "\u2663" : "C";
+            break;
+        case 3:
+            suit = sym ? "\u2660" : "S";
+            break;
+        default:
+            //no suit like jokers? or other odd cards in games
+            suit = "blank?";
+            break;
+    }
+    if( isJoker ){
+        return face;
+    }
+    else{
+        return face + suit;
     }
 }
 

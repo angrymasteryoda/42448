@@ -7,6 +7,8 @@
 #ifndef CARD_H
 #define	CARD_H
 
+#include <string>
+using namespace std;
 class Card{
 public:
     Card();
@@ -17,6 +19,7 @@ public:
     void setSuit( int );
     void setFace( int );
     void printCard( Card );
+    string printAbbrev( Card, bool );
 private:
     int suit;
     int face;

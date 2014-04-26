@@ -336,6 +336,10 @@ void problem6(){
 
 string encrypt( int num[], int size ){
     string res = "0000";
+    //swap numbers around
+    swap1( num[0], num[1] );
+    swap1( num[2], num[3] );
+    
     for( int i = 0; i < size; i++){
         num[i] += 3;
         num[i] %= 8;
@@ -346,6 +350,10 @@ string encrypt( int num[], int size ){
 
 string decrypt( int num[], int size ){
     string res = "0000";
+    //swap numbers around
+    swap1( num[1], num[0] );
+    swap1( num[3], num[2] );
+    
     for( int i = 0; i < size; i++){
         num[i] -= 3;
         if( num[i] < 0) {

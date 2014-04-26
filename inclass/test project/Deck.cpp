@@ -83,6 +83,9 @@ Card Deck::deal(){
         return deck[currentCard++];
     }   
 }
+Card Deck::deal( int i ){
+    return deck[i];
+}
 
 /**
  * prints out the entire deck in plain text

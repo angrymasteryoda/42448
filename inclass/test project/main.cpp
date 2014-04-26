@@ -20,14 +20,27 @@ void destroy( Card* );
 void destroy( Player* );
 
 int main( int argc, char** argv ) {
-    //srand( time( NULL ) );
+    srand( time( NULL ) );
     
     Game me;
-    //TODO fix this error main.cpp:25: error: request for member `start' in `game', which is of non-class type `Game ()()'
     me.start();
+//    string s = "as";
+//    string b = "df";
+//    string c = s + b;
+//    cout << c;
+    //♠♣♥♦
+//    cout << "+----+\n";
+//    cout << "|1♠  |\n";
+//    cout << "|    |\n";
+//    cout << "+----+\n";       
+    
+//    int s;
+//    cout << "text\n";
+//    cin.get();
+//    cout << 'e';
     
 //    Deck deck( 54 );
-    //deck.shuffle( 10 );
+//    deck.shuffle( 10 );
 //    Card* cards = deck.getDeck();
 //    deck.printDeck( 4 );
 //    cout << endl;
@@ -52,5 +65,6 @@ void destroy( Card* c ){
     delete [] c;
 }
 void destroy( Player* p){
+    delete [] p->hand;
     delete [] p;
 }

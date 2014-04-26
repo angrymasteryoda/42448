@@ -18,6 +18,7 @@ public:
     int getCurrentCard();
     Card *getDeck();
     Card deal();
+    Card deal( int );
     void setCurrentCard( int );
     void shuffle();
     void shuffle( int );
