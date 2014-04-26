@@ -100,7 +100,7 @@ int main( int argc, char** argv ) {
             }
         }
     }
-    while( problem < 5 );
+    while( problem < 6 );
     return 0;
      
 }
@@ -166,7 +166,7 @@ has been accessed and what the balance would be with this fee included.*/
     
     acc.bal = acc.begBal - acc.withdraws + acc.deposits;
     
-    if(blank <= 0){
+    if( acc.bal <= 0){
         cout << "You have over drafted your balance you will be charged an overdraft fee of $12\n";
         acc.bal -= 12;
     }
@@ -301,18 +301,14 @@ individually.  All the digits must be read with one cin statement. */
 
 void problem5(){
     int num = 7;
-    //short n1= (short) factorial(num);
     cout << "short limit on factorial is " << num << endl;
     num = 16;
     cout << "int limit on factorial is " << num << endl;
     num = 20;
-    long n3= (long) factorial(num);
     cout << "long limit on factorial " << num  << endl;
     num = 33;
-    float n4= (float) factorial(num);
     cout << "float limit on factorial " << num << endl;
     num = 100;
-    double n5= (double) factorial(num);
     cout << "float limit on factorial " << num << endl;
 }
 
@@ -376,9 +372,9 @@ int factorial(int n){
 void print( Employee* d, int size ){
     for( int i = 0; i < size; i++ ){
         cout << "name: " << d[i].name << endl;
-        cout << "payrate: " << setprecision(2) << d[i].payrate << endl;
-        cout << "hours: "<< setprecision(2) << d[i].hours << endl;
-        cout << "pay: " << setprecision(2) << d[i].pay << endl;
+        cout << "payrate: " << fixed << setprecision(2) << d[i].payrate << endl;
+        cout << "hours: "<< fixed << setprecision(2) << d[i].hours << endl;
+        cout << "pay: " << fixed << setprecision(2) << d[i].pay << endl;
     }
 }
 

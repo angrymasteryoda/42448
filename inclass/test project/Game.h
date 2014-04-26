@@ -13,6 +13,7 @@
 class Game{
 private:
     int players;
+    int whoWon( Player * );
     bool isRunning;
     bool useSymbols;
     void setPlayers(int);
@@ -21,6 +22,7 @@ private:
     void print( Player );
     void dealPlayers( Player * );
     void printPlayerCards( Player * );
+    
 public:
     Game();
     ~Game();

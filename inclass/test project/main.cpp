@@ -19,9 +19,18 @@ using namespace std;
 void destroy( Card* );
 void destroy( Player* );
 
+long factorial(long n){
+    if(n <= 1){
+        return 1;
+    }
+    else{
+        return n * factorial(n-1);
+    }	
+}
 int main( int argc, char** argv ) {
     srand( time( NULL ) );
-    
+//    cout << factorial( 16 ) << ',' << factorial( 17 ) <<endl;
+//    cout << factorial( 18 ) << ',' << factorial( 19 ) <<endl;
     Game me;
     me.start();
 //    string s = "as";

@@ -16,10 +16,12 @@ public:
     ~Card();
     int getSuit();
     int getFace();
+    int getGameVal();
+    string printAbbrev( Card, bool );
     void setSuit( int );
     void setFace( int );
     void printCard( Card );
-    string printAbbrev( Card, bool );
+    
 private:
     int suit;
     int face;

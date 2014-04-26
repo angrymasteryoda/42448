@@ -33,7 +33,7 @@ void Game::stop(){
 
 void Game::run(){
     //ask if the symbols look right
-    char confirm = 'n';
+    char confirm = 'y';
 //    cout << "Do these card suit symbols look right (y/n)\n";
 //    cout << "\u2660" << "\u2663" << "\u2665" << "\u2666" <<endl;
 //    cin >> confirm;
@@ -62,7 +62,7 @@ void Game::run(){
     
     Deck deck( deckSize );
 //    deck.printDeck( 4 );
-//    deck.shuffle( 10 );
+    deck.shuffle( 10 );
     
     Player* playerDecks = new Player[players];
     
@@ -99,10 +99,16 @@ void Game::run(){
 void Game::dealPlayers(Player* p){
     //always going to be the first card so doesnt matter
     printPlayerCards( p );
-//    cout << "+----+\n";
-//    cout << "|1♠  |\n";
-//    cout << "|    |\n";
-//    cout << "+----+\n";  
+    
+    int winner = whoWon( p );
+    if ( winner == 0 ){
+        cout << "you won!\n";
+    }
+    else{
+        cout << "you lost! Player " << winner << " has won\n";
+    }
+    //todo take the others cards add them to the end of the winners deck
+    //todo war aspect
 }
 
 void Game::printPlayerCards( Player* p ){
@@ -111,14 +117,11 @@ void Game::printPlayerCards( Player* p ){
     //TODO test to make sure the print 10 is spaced right
     bool isTen = false;
     for( int i = 0; i < s; i++ ){
-        if( p[i].hand[4].getFace() == 9 ){
+        if( p[i].hand[0].getFace() == 9 ){
             isTen = true;
         }
     }
     for( int i = 0; i < s; i++ ){
-        if( p[i].hand[4].getFace() == 9 ){
-            isTen = true;
-        }
         cout << "+----";
         if( isTen ) {
             cout << "--+\t";
@@ -129,8 +132,8 @@ void Game::printPlayerCards( Player* p ){
     }
     cout << endl;
     for( int i = 0; i < s; i++ ){
-        //♠♣♥♦
-        cout << "|" << p[i].hand[0].printAbbrev( p[i].hand[4], getUseSymbols() ) << "  ";
+        //♠♣♥♦ 
+        cout << "|" << p[i].hand[0].printAbbrev( p[i].hand[0], getUseSymbols() ) << "  ";
         if( isTen ){
            cout << "  |\t";
         }
@@ -160,7 +163,29 @@ void Game::printPlayerCards( Player* p ){
         }
     }
     cout << endl;
+    for( int i = 0; i < s; i++ ){
+        if ( i == 0 ) {
+            cout << "you\t";
+        }
+        else{
+            cout << "ai" << i << "\t";
+        }
+    }
+    cout << endl;
+    
 }
+
+int Game::whoWon(Player* p ){
+    int face = 0;
+    int winner;
+    for( int i = 0; i < getPlayers(); i++ ){
+        if( face < p[i].hand[0].getGameVal() ){
+            face = p[i].hand[0].getGameVal();
+            winner = i;
+        }
+    }
+    return winner;
+} 
 
 bool Game::getUseSymbols(){
     return useSymbols;

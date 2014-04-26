@@ -141,6 +141,19 @@ string Card::printAbbrev( Card c, bool sym ){
     }
 }
 
+int Card::getGameVal(){
+    if ( getFace() == 0) {
+        return 13;
+    }
+    else if( getFace() == 13 ){
+        return 14;
+    }
+    else{
+        return getFace();
+    }
+
+}
+
 int Card::getFace(){
     return face;
 }
