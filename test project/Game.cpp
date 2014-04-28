@@ -88,7 +88,7 @@ void Game::run(){
     //init game loop
     while( getIsRunning() ){
         cout << "Press enter to deal your card\n";
-//        cin.get();
+        cin.get();
         dealPlayers( playerDecks );
         if( getGameOver() ){
             stop();
@@ -100,9 +100,20 @@ void Game::run(){
 
 void Game::checkGameOver( Player* p, int winner ){
     //check if any players only have 1 card and see if they lost
+    //todo temp fix to wars
+    if( winner == -1 ){
+        return;
+    }
+    
     for( int i = 0; i < getPlayers(); i++){
         if( p[i].size == 1 ){
             if ( winner != i ){
+                /* 
+                 todo make it more than 2 people to play
+                 need to find the loser. remove him
+                 then reset the player array to only have n-1 player
+                 which may mean that i have to reintinalize the player array
+                 */
                 setGameOver( true );
                 if ( winner == 0 ){
                     cout << "You won the game!\n";
@@ -124,6 +135,9 @@ void Game::dealPlayers(Player* p){
     if ( winner == 0 ){
         cout << "you won!\n";
     }
+    else if ( winner == -1 ){
+        cout << "you tied! Time for a war\n";
+    }
     else{
         cout << "you lost! Player " << winner << " has won\n";
     }
@@ -142,7 +156,7 @@ void Game::dealPlayers(Player* p){
 
 void Game::rearrangeHand( Player* p, int winner ){
     //todo add this if time allows
-    bool war = false;
+    bool war = winner == -1;
     //make a copy of the players array
     //destroy it then recreate with different length and put the new cards for the winner
     //and remove the card from the loser
@@ -206,6 +220,9 @@ void Game::rearrangeHand( Player* p, int winner ){
             destroy( p[i].hand );
             p[i].hand = copyHand( copy[i] );
         }
+    }
+    else{
+        //there is a war
     }
     destroy( copy );
 }
@@ -289,11 +306,17 @@ void Game::printPlayerCards( Player* p ){
 }
 
 int Game::whoWon(Player* p ){
-    int face = 0;
+    //todo make wars possible
+    int highest = 0;
     int winner;
     for( int i = 0; i < getPlayers(); i++ ){
-        if( face < p[i].hand[0].getGameVal() ){
-            face = p[i].hand[0].getGameVal();
+        if ( highest == p[i].hand[0].getGameVal() ){
+            //more problems with more than 2 people who do you war?
+            //what about double wars or more?
+            winner = -1;
+        }
+        if( highest < p[i].hand[0].getGameVal() ){
+            highest = p[i].hand[0].getGameVal();
             winner = i;
         }
     }
