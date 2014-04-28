@@ -29,8 +29,7 @@ long factorial(long n){
 }
 int main( int argc, char** argv ) {
     srand( time( NULL ) );
-//    cout << factorial( 16 ) << ',' << factorial( 17 ) <<endl;
-//    cout << factorial( 18 ) << ',' << factorial( 19 ) <<endl;
+    
     Game me;
     me.start();
 //    string s = "as";

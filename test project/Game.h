@@ -11,27 +11,33 @@
 #include "Player.h"
 
 class Game{
-private:
-    int players;
-    int whoWon( Player * );
-    bool isRunning;
-    bool useSymbols;
-    void setPlayers(int);
-    void setUseSymbols( bool );
-    void destroy( Player * );
-    void print( Player );
-    void dealPlayers( Player * );
-    void printPlayerCards( Player * );
-    
 public:
     Game();
     ~Game();
     int getPlayers();
     bool getIsRunning();
+    bool getGameOver();
     bool getUseSymbols();
     void setIsRunning( bool );
     void start();
     void stop();
     void run();
+private:
+    int players;
+    int whoWon( Player * );
+    Card* copyHand( Player p );
+    bool isRunning;
+    bool useSymbols;
+    bool gameOver;
+    void setGameOver( bool );
+    void setPlayers(int);
+    void setUseSymbols( bool );
+    void destroy( Player * );
+    void destroy( Card * );
+    void print( Player );
+    void dealPlayers( Player * );
+    void printPlayerCards( Player * );
+    void rearrangeHand( Player* p, int winner ); 
+    void checkGameOver( Player* p, int winner );
 };
 #endif	/* GAME_H */

@@ -105,7 +105,7 @@ string Card::printAbbrev( Card c, bool sym ){
             break;
         case 13:
             isJoker = true;
-            face = "Joker";
+            face = "JO";
             break;
         default:
             //convert int to string
