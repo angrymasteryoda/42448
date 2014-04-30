@@ -13,6 +13,7 @@
 #include "Player.h"
 
 using namespace std;
+
 Game::Game( ) {
     setPlayers( 0 );
     setIsRunning( false );
@@ -23,15 +24,24 @@ Game::Game( ) {
 Game::~Game( ) {
 }
 
+/**
+ * start the game
+ */
 void Game::start(){
     setIsRunning( true );
     run();
 }
 
+/**
+ * stop the game
+ */
 void Game::stop(){
     setIsRunning( false );
 }
 
+/**
+ * start the game loop
+ */
 void Game::run(){
     //ask if the symbols look right
     char confirm = 'n';
@@ -88,7 +98,7 @@ void Game::run(){
     //init game loop
     while( getIsRunning() ){
         cout << "Press enter to deal your card\n";
-//        cin.get();
+        cin.get();
         dealPlayers( playerDecks );
         if( getGameOver() ){
             stop();

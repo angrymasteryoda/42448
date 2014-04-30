@@ -14,11 +14,19 @@
 
 using namespace std;
 
+/**
+ * constructor
+ * @param face
+ * @param suit
+ */
 Card::Card( int f, int s ){
     setFace( f );
     setSuit( s );
 }
 
+/**
+ * constructor defaulted to 0's
+ */
 Card::Card(){
     setFace( 0 );
     setSuit( 0 );
@@ -28,6 +36,10 @@ Card::~Card(){
     
 }
 
+/**
+ * print out a single card in plain text
+ * @param card
+ */
 void Card::printCard( Card c ){
     string face;
     bool isJoker = false;
@@ -141,6 +153,10 @@ string Card::printAbbrev( Card c, bool sym ){
     }
 }
 
+/**
+ * gets the game value of a card not face value
+ * @return Game value
+ */
 int Card::getGameVal(){
     if ( getFace() == 0) {
         return 13;

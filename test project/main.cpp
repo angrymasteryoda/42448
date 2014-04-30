@@ -19,53 +19,18 @@ using namespace std;
 void destroy( Card* );
 void destroy( Player* );
 
-long factorial(long n){
-    if(n <= 1){
-        return 1;
-    }
-    else{
-        return n * factorial(n-1);
-    }	
-}
 int main( int argc, char** argv ) {
     srand( time( NULL ) );
     
-    Game me;
-    me.start();
-//    string s = "as";
-//    string b = "df";
-//    string c = s + b;
-//    cout << c;
-    //♠♣♥♦
-//    cout << "+----+\n";
-//    cout << "|1♠  |\n";
-//    cout << "|    |\n";
-//    cout << "+----+\n";       
+    char cont;
+    do{
+        Game me;
+        me.start();
+        cout << "Want to play agian\n";
+        cin >> cont;
+    }
+    while( cont != 'n' );
     
-//    int s;
-//    cout << "text\n";
-//    cin.get();
-//    cout << 'e';
-    
-//    Deck deck( 54 );
-//    deck.shuffle( 10 );
-//    Card* cards = deck.getDeck();
-//    deck.printDeck( 4 );
-//    cout << endl;
-
-//    int p = 2;
-//    //deal to players
-//    Player* players = new Player[p];
-//    int j = 0;
-//    for( int i = 0; i < p; i++ ){
-//        players[i].hand = new Card[ ( deck.getSize() / p ) ];
-//    }
-//    for( int i = 0; i < deck.getSize(); i++ ){
-//        players[i].handcards[i];
-//    }
-//    
-//    destroy( cards );
-//    destroy( players );
     return 0;
 }
 
