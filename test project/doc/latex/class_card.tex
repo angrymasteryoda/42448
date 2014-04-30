@@ -7,38 +7,46 @@
 \hypertarget{class_card_aad945a195000dceb03adfa9980c846ad}{{\bfseries Card} (int, int)}\label{class_card_aad945a195000dceb03adfa9980c846ad}
 
 \item 
-\hypertarget{class_card_ad82a99d71c4659f9ff66a716151ef910}{int {\bfseries get\-Suit} ()}\label{class_card_ad82a99d71c4659f9ff66a716151ef910}
+\hypertarget{class_card_ad82a99d71c4659f9ff66a716151ef910}{int {\bfseries get\+Suit} ()}\label{class_card_ad82a99d71c4659f9ff66a716151ef910}
 
 \item 
-\hypertarget{class_card_a8538ea5ba2f7e9889719f6bad587a22a}{int {\bfseries get\-Face} ()}\label{class_card_a8538ea5ba2f7e9889719f6bad587a22a}
+\hypertarget{class_card_a8538ea5ba2f7e9889719f6bad587a22a}{int {\bfseries get\+Face} ()}\label{class_card_a8538ea5ba2f7e9889719f6bad587a22a}
 
 \item 
-\hypertarget{class_card_af5dac040b788a9630d9e72ad490dcd26}{int {\bfseries get\-Game\-Val} ()}\label{class_card_af5dac040b788a9630d9e72ad490dcd26}
+int \hyperlink{class_card_af5dac040b788a9630d9e72ad490dcd26}{get\+Game\+Val} ()
+\item 
+string \hyperlink{class_card_a0c7b8b3624b37a1c347745a90e985965}{print\+Abbrev} (\hyperlink{class_card}{Card}, bool)
+\item 
+\hypertarget{class_card_a6ccd6088377ab1171aa647f987eeeaaf}{void {\bfseries set\+Suit} (int)}\label{class_card_a6ccd6088377ab1171aa647f987eeeaaf}
 
 \item 
-string \hyperlink{class_card_a0c7b8b3624b37a1c347745a90e985965}{print\-Abbrev} (\hyperlink{class_card}{Card}, bool)
-\item 
-\hypertarget{class_card_a6ccd6088377ab1171aa647f987eeeaaf}{void {\bfseries set\-Suit} (int)}\label{class_card_a6ccd6088377ab1171aa647f987eeeaaf}
+\hypertarget{class_card_a9cb8f841e5c6a981336d1814b6569a12}{void {\bfseries set\+Face} (int)}\label{class_card_a9cb8f841e5c6a981336d1814b6569a12}
 
 \item 
-\hypertarget{class_card_a9cb8f841e5c6a981336d1814b6569a12}{void {\bfseries set\-Face} (int)}\label{class_card_a9cb8f841e5c6a981336d1814b6569a12}
-
-\item 
-\hypertarget{class_card_a5fdb67ed250c91dfdec6cfff67d95648}{void {\bfseries print\-Card} (\hyperlink{class_card}{Card})}\label{class_card_a5fdb67ed250c91dfdec6cfff67d95648}
-
+void \hyperlink{class_card_a5fdb67ed250c91dfdec6cfff67d95648}{print\+Card} (\hyperlink{class_card}{Card})
 \end{DoxyCompactItemize}
 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_card_a0c7b8b3624b37a1c347745a90e985965}{\index{Card@{Card}!print\-Abbrev@{print\-Abbrev}}
-\index{print\-Abbrev@{print\-Abbrev}!Card@{Card}}
-\subsubsection[{print\-Abbrev}]{\setlength{\rightskip}{0pt plus 5cm}string Card\-::print\-Abbrev (
+\hypertarget{class_card_af5dac040b788a9630d9e72ad490dcd26}{\index{Card@{Card}!get\+Game\+Val@{get\+Game\+Val}}
+\index{get\+Game\+Val@{get\+Game\+Val}!Card@{Card}}
+\subsubsection[{get\+Game\+Val}]{\setlength{\rightskip}{0pt plus 5cm}int Card\+::get\+Game\+Val (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_card_af5dac040b788a9630d9e72ad490dcd26}
+returns the actually game value not the face value \begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\hypertarget{class_card_a0c7b8b3624b37a1c347745a90e985965}{\index{Card@{Card}!print\+Abbrev@{print\+Abbrev}}
+\index{print\+Abbrev@{print\+Abbrev}!Card@{Card}}
+\subsubsection[{print\+Abbrev}]{\setlength{\rightskip}{0pt plus 5cm}string Card\+::print\+Abbrev (
 \begin{DoxyParamCaption}
 \item[{{\bf Card}}]{c, }
 \item[{bool}]{sym}
 \end{DoxyParamCaption}
 )}}\label{class_card_a0c7b8b3624b37a1c347745a90e985965}
-prints out the abbrevation of the card eg 10♠ or 10\-H 
+prints out the abbrevation of the card eg 10♠ or 10\+H 
 \begin{DoxyParams}{Parameters}
 {\em c} & \\
 \hline
@@ -46,11 +54,23 @@ prints out the abbrevation of the card eg 10♠ or 10\-H
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+string 
 \end{DoxyReturn}
+\hypertarget{class_card_a5fdb67ed250c91dfdec6cfff67d95648}{\index{Card@{Card}!print\+Card@{print\+Card}}
+\index{print\+Card@{print\+Card}!Card@{Card}}
+\subsubsection[{print\+Card}]{\setlength{\rightskip}{0pt plus 5cm}void Card\+::print\+Card (
+\begin{DoxyParamCaption}
+\item[{{\bf Card}}]{c}
+\end{DoxyParamCaption}
+)}}\label{class_card_a5fdb67ed250c91dfdec6cfff67d95648}
+Prints a single card in plain text 
+\begin{DoxyParams}{Parameters}
+{\em c} & card to print \\
+\hline
+\end{DoxyParams}
 
 
-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-42448/test project/Card.\-h\item 
-42448/test project/Card.\-cpp\end{DoxyCompactItemize}
+Card.\+h\item 
+Card.\+cpp\end{DoxyCompactItemize}

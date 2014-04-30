@@ -28,6 +28,10 @@ Card::~Card(){
     
 }
 
+/**
+ * Prints a single card in plain text
+ * @param c card to print
+ */
 void Card::printCard( Card c ){
     string face;
     bool isJoker = false;
@@ -85,7 +89,7 @@ void Card::printCard( Card c ){
  * prints out the abbrevation of the card eg 10♠ or 10H
  * @param c
  * @param sym can print symbols
- * @return 
+ * @return string
  */
 string Card::printAbbrev( Card c, bool sym ){
     string face;
@@ -141,6 +145,10 @@ string Card::printAbbrev( Card c, bool sym ){
     }
 }
 
+/**
+ * returns the actually game value not the face value
+ * @return int
+ */
 int Card::getGameVal(){
     if ( getFace() == 0) {
         return 13;

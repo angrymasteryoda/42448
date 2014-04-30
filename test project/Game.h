@@ -24,7 +24,7 @@ public:
     void run();
 private:
     int players;
-    int whoWon( Player * );
+    int whoWon( Player *, int i = 0 );
     Card* copyHand( Player p );
     bool isRunning;
     bool useSymbols;
@@ -36,8 +36,9 @@ private:
     void destroy( Card * );
     void print( Player );
     void dealPlayers( Player * );
-    void printPlayerCards( Player * );
+    void printPlayerCards( Player *, int i = 0);
     void rearrangeHand( Player* p, int winner ); 
     void checkGameOver( Player* p, int winner );
+    void printWarCards( Player* p, int p1, int p2 );
 };
 #endif	/* GAME_H */

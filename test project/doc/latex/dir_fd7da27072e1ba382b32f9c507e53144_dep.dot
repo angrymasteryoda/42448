@@ -1,0 +1,13 @@
+digraph "build/Debug" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_4fef79e7177ba769987a8da36c892c5f {
+    graph [ bgcolor="#ddddee", pencolor="black", label="build" fontname="Helvetica", fontsize="10", URL="dir_4fef79e7177ba769987a8da36c892c5f.html"]
+  subgraph clusterdir_fd7da27072e1ba382b32f9c507e53144 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_fd7da27072e1ba382b32f9c507e53144.html"];
+    dir_fd7da27072e1ba382b32f9c507e53144 [shape=plaintext label="Debug"];
+    dir_5aa0f545e3a098f50edcb27c1cb11f25 [shape=box label="Cygwin-Windows" color="black" fillcolor="white" style="filled" URL="dir_5aa0f545e3a098f50edcb27c1cb11f25.html"];
+  }
+  }
+}

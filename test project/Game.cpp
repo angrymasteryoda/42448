@@ -23,15 +23,24 @@ Game::Game( ) {
 Game::~Game( ) {
 }
 
+/**
+ * start the game
+ */
 void Game::start(){
     setIsRunning( true );
     run();
 }
 
+/**
+ * stop the game
+ */
 void Game::stop(){
     setIsRunning( false );
 }
 
+/**
+ * begin the game loop
+ */
 void Game::run(){
     //ask if the symbols look right
     char confirm = 'n';
@@ -92,12 +101,18 @@ void Game::run(){
         dealPlayers( playerDecks );
         if( getGameOver() ){
             stop();
+            cout << "clean exit\n";
         }
     }
     //end of game clean up the mess you made
     destroy( playerDecks );
 }
 
+/**
+ * check if the game is over
+ * @param p Players
+ * @param winner
+ */
 void Game::checkGameOver( Player* p, int winner ){
     //check if any players only have 1 card and see if they lost
     //todo temp fix to wars
@@ -127,6 +142,10 @@ void Game::checkGameOver( Player* p, int winner ){
     }
 }
 
+/**
+ * deals out the cards
+ * @param p
+ */
 void Game::dealPlayers(Player* p){
     //always going to be the first card so doesnt matter
     printPlayerCards( p );
@@ -154,9 +173,14 @@ void Game::dealPlayers(Player* p){
     //todo war aspect
 }
 
+/**
+ * rearrange the players hand so its easy for me to use
+ * @param p
+ * @param winner
+ */
 void Game::rearrangeHand( Player* p, int winner ){
     //todo add this if time allows
-    bool war = winner == -1;
+    bool war = ( winner == -1 );
     //make a copy of the players array
     //destroy it then recreate with different length and put the new cards for the winner
     //and remove the card from the loser
@@ -223,10 +247,43 @@ void Game::rearrangeHand( Player* p, int winner ){
     }
     else{
         //there is a war
+        //print out 3 cards face down
+        //then draw the cards you
+        
+        //currently only player 0 and 1 can war
+        printWarCards( p, 0, 1);
+        cout << "Press enter to deal your card\n";
+        cin.get();
+        printPlayerCards( p, 4 );
+        winner = whoWon( p, 4 );
+        cout << "did i get here";
+        cout << winner;
+        stop();
     }
     destroy( copy );
 }
 
+void Game::printWarCards( Player* p, int p1, int p2){
+    string a[6];
+    int j = 0;
+    for( int i = 1; i <= 3; i++ ){
+        a[j++] = p[p1].hand[i].printAbbrev( p[p1].hand[i], getUseSymbols() );
+    }
+    for( int i = 1; i <= 3; i++ ){
+        a[j++] = p[p2].hand[i].printAbbrev( p[p2].hand[i], getUseSymbols() );
+    }
+    cout << "+--+--+----+\t+--+--+----+\n";
+    cout << "|" << a[0] << "|" << a[1] << "|" << a[2] << "  |\t";
+    cout << "|" << a[3] << "|" << a[4] << "|" << a[5] << "  |\n";
+    cout << "|  |  |    |\t|  |  |    |\n";
+    cout << "+--+--+----+\t+--+--+----+\n";
+}
+
+/**
+ * copy the players hand
+ * @param player
+ * @return Card*
+ */
 Card* Game::copyHand( Player p ){
     Card* c = new Card[ p.size ];
     for( int i = 0; i < p.size; i++ ){
@@ -235,13 +292,19 @@ Card* Game::copyHand( Player p ){
     return c;
 }
 
-void Game::printPlayerCards( Player* p ){
+/**
+ * prints the players hand
+ * @param p
+ * @param cardIndex
+ */
+void Game::printPlayerCards( Player* p, int cardIndex ){
+    //TODO  improve this later
     int s = getPlayers();
     //print per line
     //TODO test to make sure the print 10 is spaced right
     bool isTen = false;
     for( int i = 0; i < s; i++ ){
-        if( p[i].hand[0].getFace() == 9 ){
+        if( p[i].hand[cardIndex].getFace() == 9 ){
             isTen = true;
         }
     }
@@ -257,7 +320,7 @@ void Game::printPlayerCards( Player* p ){
     cout << endl;
     for( int i = 0; i < s; i++ ){
         //♠♣♥♦ 
-        cout << "|" << p[i].hand[0].printAbbrev( p[i].hand[0], getUseSymbols() ) << "  ";
+        cout << "|" << p[i].hand[cardIndex].printAbbrev( p[i].hand[cardIndex], getUseSymbols() ) << "  ";
         if( isTen ){
            cout << "  |\t";
         }
@@ -305,18 +368,23 @@ void Game::printPlayerCards( Player* p ){
     
 }
 
-int Game::whoWon(Player* p ){
+/**
+ * finds out who won the deal
+ * @param p
+ * @return winner's array index or -1 if tie
+ */
+int Game::whoWon(Player* p, int cardIndex ){
     //todo make wars possible
     int highest = 0;
     int winner;
     for( int i = 0; i < getPlayers(); i++ ){
-        if ( highest == p[i].hand[0].getGameVal() ){
+        if ( highest == p[i].hand[cardIndex].getGameVal() ){
             //more problems with more than 2 people who do you war?
             //what about double wars or more?
             winner = -1;
         }
-        if( highest < p[i].hand[0].getGameVal() ){
-            highest = p[i].hand[0].getGameVal();
+        if( highest < p[i].hand[cardIndex].getGameVal() ){
+            highest = p[i].hand[cardIndex].getGameVal();
             winner = i;
         }
     }
