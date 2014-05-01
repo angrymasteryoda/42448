@@ -21,7 +21,7 @@ void destroy( Player* );
 
 int main( int argc, char** argv ) {
     srand( time( NULL ) );
-    
+    lol
     char cont;
     do{
         Game me;
