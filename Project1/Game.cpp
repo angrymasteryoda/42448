@@ -217,6 +217,21 @@ void Game::rearrangeHand( Player* p, int winner ){
             p[i].hand = copyHand( copy[i] );
         }
     }
+    else if ( winner == -1 ) {
+        //move the players first card to their last
+        Card* tempDeck = copyHand( p[0] );
+        for ( int i = 0; i < getPlayers(); i++ ){
+                tempDeck = copyHand( p[i] );
+                //resize
+                copy[i].hand = new Card[ copy[i].size ];
+                //copy
+                for( int j = 0; j < p[i].size - 1; j++ ){
+                    copy[i].hand[j] = tempDeck[ ( j + 1) ];
+                }
+                copy[i].hand[ ( p[i].size - 1) ] = tempDeck[ 0 ];
+                destroy( tempDeck );
+        }
+    }
     destroy( copy );
 }
 
@@ -302,6 +317,10 @@ int Game::whoWon(Player* p ){
     int face = 0;
     int winner;
     for( int i = 0; i < getPlayers(); i++ ){
+        if( face == p[i].hand[0] ) {
+            face = p[i].hand[0].getGameVal();
+            winner = -1;
+        }
         if( face < p[i].hand[0].getGameVal() ){
             face = p[i].hand[0].getGameVal();
             winner = i;
