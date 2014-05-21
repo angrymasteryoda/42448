@@ -26,7 +26,7 @@ int main( int argc, char** argv ) {
     do{
         Game me;
         me.start();
-        cout << "play agian? (y or n)\n";
+        cout << "Want to play again (y or n)\n";
         cin >> cont;
     }
     while( cont != 'n' );

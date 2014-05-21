@@ -39,7 +39,7 @@ void Game::stop(){
 }
 
 /**
- * begin the game loop
+ * start the game loop
  */
 void Game::run(){
     //ask if the symbols look right

@@ -14,11 +14,19 @@
 
 using namespace std;
 
+/**
+ * constructor
+ * @param face
+ * @param suit
+ */
 Card::Card( int f, int s ){
     setFace( f );
     setSuit( s );
 }
 
+/**
+ * constructor defaulted to 0's
+ */
 Card::Card(){
     setFace( 0 );
     setSuit( 0 );
