@@ -11,8 +11,8 @@
 using namespace std;
 
 //Our Libraries
-#include "Card.h"
 #include "Deck.h"
+#include "ChildCard.h"
 
 //Global Constants
 
@@ -41,10 +41,23 @@ int main( int argc, char** argv ) {
         }
         delete []hand;
     }
+    //checout the child card 
+    ChildCard child(0);
+    cout << endl;
+    child.setFN("justatest.dat");
+    cout << "child card name is: " << child.getFN() << endl;
+    cout << child.name( ) << child.suit( );
+    cout << " " << static_cast<int> ( child.value( ) );
+    cout << " " << static_cast<int> ( child.getNumber( ) ) << endl;
+    cout << "illustraction of polymorphic bhavior\n";
+    Card *crd = &child;
+    cout << crd->name( ) << crd->suit( );
+    cout << " " << static_cast<int> ( crd->value( ) );
+    cout << " " << static_cast<int> ( crd->getNumber( ) ) << endl;
     //Exit stage right
-    cout << "Press a number key" << endl;
-    int dum;
-    cin >> dum;
+//    cout << "Press a number key" << endl;
+//    int dum;
+//    cin >> dum;
     return 0;
 }
 

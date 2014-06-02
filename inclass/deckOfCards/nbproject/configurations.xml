@@ -12,8 +12,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>AbstractCard.h</itemPath>
       <itemPath>Card.cpp</itemPath>
       <itemPath>Card.h</itemPath>
+      <itemPath>ChildCard.h</itemPath>
       <itemPath>Deck.cpp</itemPath>
       <itemPath>Deck.h</itemPath>
       <itemPath>main.cpp</itemPath>

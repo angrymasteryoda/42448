@@ -8,7 +8,11 @@
 #ifndef CARD_H
 #define	CARD_H
 
-class Card {
+#include "AbstractCard.h"
+
+using namespace std;
+
+class Card:public AbstactCard{
 private:
     char number;
 public:
@@ -16,7 +20,6 @@ public:
     char suit();
     char name();
     char value();
-
     char getNumber() {
         return number;
     }

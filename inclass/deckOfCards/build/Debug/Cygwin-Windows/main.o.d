@@ -1,5 +1,10 @@
-build/Debug/Cygwin-Windows/main.o: main.cpp Card.h Deck.h
+build/Debug/Cygwin-Windows/main.o: main.cpp Deck.h Card.h AbstractCard.h \
+  ChildCard.h
+
+Deck.h:
 
 Card.h:
 
-Deck.h:
+AbstractCard.h:
+
+ChildCard.h:
