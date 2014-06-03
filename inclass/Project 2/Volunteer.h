@@ -8,8 +8,10 @@
 #ifndef VOLUNTEER_H
 #define	VOLUNTEER_H
 
-class Employee:public Person{
+class Volunteer:public Person{
 public:
+    void setHours( float );
+    float getHours();
 private:
     float hours;
 };

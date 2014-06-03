@@ -13,6 +13,11 @@ using namespace std;
 
 class Employee:public Person{
 public:
+    Employee();
+    void setPayrate( float );
+    void setHours( float );
+    float getPayrate();
+    float getHours();
 private:
     float payrate;
     float hours;
