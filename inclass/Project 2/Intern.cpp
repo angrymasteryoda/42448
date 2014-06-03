@@ -5,10 +5,18 @@
  * Created on June 2, 2014, 4:37 PM
  */
 
+#include "Intern.h"
+
 using namespace std;
 
-Intern::Intern(){
-    
+Intern::Intern( int id ){
+    setFname( "" );
+    setLname( "" );
+    setId( id );
+    setAge( 0 );
+    setSex( 0 );
+    setPayrate( 0.0 );
+    setHours( 0.0 );
 }
 
 void Intern::setPayrate( float f ){
@@ -29,6 +37,15 @@ float Intern::getPayrate(){
 
 float Intern::getHours(){
     return hours;
+}
+
+float Intern::getPay(){
+    if ( getIsPaid() ) {
+        return getPayrate() * getHours();
+    }
+    else{
+        return 0.0;
+    }
 }
 
 bool Intern::getIsPaid(){

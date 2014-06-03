@@ -12,10 +12,15 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Data.cpp</itemPath>
+      <itemPath>Data.h</itemPath>
+      <itemPath>../Project 2/Employee.cpp</itemPath>
       <itemPath>Employee.h</itemPath>
+      <itemPath>../Project 2/Intern.cpp</itemPath>
       <itemPath>Intern.h</itemPath>
       <itemPath>Person.cpp</itemPath>
       <itemPath>Person.h</itemPath>
+      <itemPath>Volunteer.cpp</itemPath>
       <itemPath>Volunteer.h</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>

@@ -22,6 +22,7 @@ public:
     int getId();
     int getAge();
     int getSex();
+    virtual float getPay() = 0;
 private:
     string fname;
     string lname;

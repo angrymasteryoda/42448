@@ -8,10 +8,17 @@
 #ifndef VOLUNTEER_H
 #define	VOLUNTEER_H
 
+#include "Person.h"
+
+using namespace std;
+
 class Volunteer:public Person{
 public:
     void setHours( float );
     float getHours();
+    float getPay(){
+        return 0.0;
+    }
 private:
     float hours;
 };

@@ -35,8 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/1050388284/Employee.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/Person.o
+	${OBJECTDIR}/Volunteer.o \
+	${OBJECTDIR}/_ext/1050388284/Intern.o \
+	${OBJECTDIR}/Person.o \
+	${OBJECTDIR}/Data.o
 
 
 # C Compiler Flags
@@ -63,15 +67,35 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project_2.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project_2 ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/_ext/1050388284/Employee.o: ../Project\ 2/Employee.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1050388284
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1050388284/Employee.o ../Project\ 2/Employee.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
+${OBJECTDIR}/Volunteer.o: Volunteer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Volunteer.o Volunteer.cpp
+
+${OBJECTDIR}/_ext/1050388284/Intern.o: ../Project\ 2/Intern.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1050388284
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1050388284/Intern.o ../Project\ 2/Intern.cpp
+
 ${OBJECTDIR}/Person.o: Person.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Person.o Person.cpp
+
+${OBJECTDIR}/Data.o: Data.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Data.o Data.cpp
 
 # Subprojects
 .build-subprojects:

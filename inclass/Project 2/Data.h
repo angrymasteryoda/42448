@@ -1,8 +1,8 @@
 /* 
  * File:   Data.h
- * Author: michael.risher
+ * Author: Michael
  *
- * Created on June 2, 2014, 3:52 PM
+ * Created on June 2, 2014, 8:19 PM
  */
 
 #ifndef DATA_H
@@ -17,11 +17,18 @@ using namespace std;
 
 class Data{
 public:
-    Data();
+    Data( int );
+    Data( const Data & );
+    void operator=( const Data & );
+    int getTotalRecords();
+    void pushBackEmployee( Employee );
+    void pushBackIntern( Intern );
+    void pushBackVolunteer( Volunteer );
     vector<Employee> getEmployees();
     vector<Intern> getInterns();
     vector<Volunteer> getVolunteers();
 private:
+    int totalRecords;
     vector<Employee> employees;
     vector<Intern> interns;
     vector<Volunteer> volunteers;

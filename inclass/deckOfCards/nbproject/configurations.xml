@@ -19,6 +19,7 @@
       <itemPath>Deck.cpp</itemPath>
       <itemPath>Deck.h</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>todo.yml</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"

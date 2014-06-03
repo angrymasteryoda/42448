@@ -9,13 +9,14 @@
 
 using namespace std;
 
-Employee::Employee(){
+Employee::Employee( int id){
     setFname( "" );
     setLname( "" );
-    setId( 0 );
+    setId( id );
     setAge( 0 );
     setSex( 0 );
-    
+    setPayrate( 0.0 );
+    setHours( 0.0 );
 }
 
 void Employee::setPayrate( float f ){
@@ -32,4 +33,8 @@ float Employee::getPayrate(){
 
 float Employee::getHours(){
     return hours;
+}
+
+float Employee::getPay(){
+    return payrate * hours;
 }

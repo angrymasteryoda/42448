@@ -24,6 +24,10 @@ void Person::setAge( int a ) {
     age = a;
 }
 
+/**
+ * set the sex 0 F, 1 M
+ * @param s
+ */
 void Person::setSex( int s ){
     if( s == 0 || s == 1 ){
         sex = s;
