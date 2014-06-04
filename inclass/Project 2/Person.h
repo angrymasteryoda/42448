@@ -26,7 +26,7 @@ public:
     int getAge();
     int getSex();
     virtual float getPay() = 0;
-protected:
+private:
     string fname;
     string lname;
     int id;

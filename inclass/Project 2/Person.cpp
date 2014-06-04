@@ -49,3 +49,7 @@ int Person::getId() {
 int Person::getAge(){
     return age;
 }
+
+int Person::getSex(){
+    return sex;
+}

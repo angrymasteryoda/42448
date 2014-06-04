@@ -20,27 +20,27 @@ void buildIntern( Data );
 void buildVolunteer( Data );
 
 int main( int argc, char** argv ) {
-    char option;
-    
-    Data data( "save.txt" );
-    
-    cout << "Welcome to employee management 1.0\n";
-    do {
-        menu();
-        cout << "Enter an option from the menu\n";
-        cin >> option;
-        //option = cin.get();
-        
-        switch( option ){
-            case 'b':
-                build( data );
-                break;
-            case 'q':
-                cout << "Bye.\n";
-                break;
-        }
-    } while( option != 'q' );
-    
+//    char option;
+//    
+//    Data data( "save.txt" );
+//    
+//    cout << "Welcome to employee management 1.0\n";
+//    do {
+//        menu();
+//        cout << "Enter an option from the menu\n";
+//        cin >> option;
+//        //option = cin.get();
+//        
+//        switch( option ){
+//            case 'b':
+//                build( data );
+//                break;
+//            case 'q':
+//                cout << "Bye.\n";
+//                break;
+//        }
+//    } while( option != 'q' );
+//    
     return 0;
 }
 

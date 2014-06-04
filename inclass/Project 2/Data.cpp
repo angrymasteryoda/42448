@@ -50,24 +50,44 @@ void Data::operator = ( const Data &right ){
     }
 }
 
+/**
+ * push back to employee vector
+ * @param e
+ */
 void Data::pushBackEmployee(Employee e ){
     employees.push_back( e );
 }
 
+/**
+ * push back to intern vector
+ * @param i
+ */
 void Data::pushBackIntern(Intern i ) {
     interns.push_back( i );
 }
 
+/**
+ * push back to volunteer vector
+ * @param v
+ */
 void Data::pushBackVolunteer(Volunteer v){
     volunteers.push_back( v );
 }
 
+/**
+ * save all the date to default file
+ */
 void Data::save(){
     save( getFileName() );
 }
+
+/**
+ * save all the data to custom file
+ * @param fileName
+ */
 void Data::save( string fileName ) {
     fstream file;
-    file.open( fileName, ios::out );
+    file.open( fileName.c_str(), ios::out );
     
     for( int i = 0; i < employees.size(); i++ ){
         file << employees.at( i ).toString() << '\n';
@@ -88,6 +108,10 @@ void Data::setFileName(string s ) {
     fileName = s;
 }
 
+int Data::getTotalRecords(){
+    return employees.size() + interns.size() + volunteers.size();
+}
+
 string Data::getFileName(){
     return fileName;
 }
@@ -102,8 +126,4 @@ vector<Intern> Data::getInterns(){
 
 vector<Volunteer> Data::getVolunteers(){
     return volunteers;
-}
-
-int Data::getTotalRecords(){
-    return employees.size() + interns.size() + volunteers.size();
 }

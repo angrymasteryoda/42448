@@ -9,6 +9,10 @@
 
 using namespace std;
 
+/**
+ * Constructor
+ * @param filename
+ */
 Intern::Intern( int id ){
     setFname( "" );
     setLname( "" );
@@ -53,8 +57,13 @@ bool Intern::getIsPaid(){
     return isPaid;
 }
 
+/**
+ * write object to string for saving
+ * @return 
+ */
 string Intern::toString(){
     stringstream s;
-    s << "int" << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << isPaid << '\t' << payrate << '\t' << hours;
+//    s << "int" << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << isPaid << '\t' << payrate << '\t' << hours;
+    s << "int" << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getIsPaid() << '\t' << getPayrate() << '\t' << getHours();
     return s.str();
 }

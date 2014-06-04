@@ -10,6 +10,10 @@
 
 using namespace std;
 
+/**
+ * Constructor
+ * @param filename
+ */
 Volunteer::Volunteer( int id ){
     setFname( "" );
     setLname( "" );
@@ -27,8 +31,13 @@ float Volunteer::getHours(){
     return hours;
 }
 
+/**
+ * write object to string for saving
+ * @return 
+ */
 string Volunteer::toString(){
     stringstream s;
-    s << "vol" << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << hours;
+    //s << "vol" << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << hours;
+    s << "vol" << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getHours();
     return s.str();
 }

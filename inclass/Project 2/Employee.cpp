@@ -9,6 +9,10 @@
 
 using namespace std;
 
+/**
+ * Constructor
+ * @param filename
+ */
 Employee::Employee( int id){
     setFname( "" );
     setLname( "" );
@@ -39,8 +43,13 @@ float Employee::getPay(){
     return payrate * hours;
 }
 
+/**
+ * write object to string for saving
+ * @return 
+ */
 string Employee::toString(){
     stringstream s;
-    s << "emp" << id << '\t' << fname << '\t' + lname << '\t' << age << '\t' << sex << '\t' << payrate << '\t' << hours;
+    //s << "emp" << id << '\t' << fname << '\t' + lname << '\t' << age << '\t' << sex << '\t' << payrate << '\t' << hours;
+    s << "emp" << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getPayrate() << '\t' << getHours();
     return s.str();
 }
