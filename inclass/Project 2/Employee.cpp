@@ -38,3 +38,9 @@ float Employee::getHours(){
 float Employee::getPay(){
     return payrate * hours;
 }
+
+string Employee::toString(){
+    stringstream s;
+    s << "emp" << id << '\t' << fname << '\t' + lname << '\t' << age << '\t' << sex << '\t' << payrate << '\t' << hours;
+    return s.str();
+}

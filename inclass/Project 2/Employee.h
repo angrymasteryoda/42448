@@ -13,12 +13,13 @@ using namespace std;
 
 class Employee:public Person{
 public:
-    Employee( int id = 0 );
+    Employee( int id );
     void setPayrate( float );
     void setHours( float );
     float getPayrate();
     float getHours();
     float getPay();
+    string toString();
 private:
     float payrate;
     float hours;

@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <string>
 
 #include "Data.h"
 
@@ -21,7 +22,7 @@ void buildVolunteer( Data );
 int main( int argc, char** argv ) {
     char option;
     
-    Data data( 0 );
+    Data data( "save.txt" );
     
     cout << "Welcome to employee management 1.0\n";
     do {
@@ -75,6 +76,8 @@ void build( Data data ){
             buildVolunteer( data );
             break;
     }
+    
+    data.save();
 }
 
 /**

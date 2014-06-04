@@ -9,6 +9,8 @@
 #define	PERSON_H
 
 #include <string>
+#include <sstream> //streamstream
+
 using namespace std;
 class Person {
 public:
@@ -19,11 +21,12 @@ public:
     void setSex( int );
     string getFname();
     string getLname();
+    virtual string toString();
     int getId();
     int getAge();
     int getSex();
     virtual float getPay() = 0;
-private:
+protected:
     string fname;
     string lname;
     int id;

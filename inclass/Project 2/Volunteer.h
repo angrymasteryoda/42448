@@ -14,11 +14,13 @@ using namespace std;
 
 class Volunteer:public Person{
 public:
+    Volunteer( int );
     void setHours( float );
     float getHours();
     float getPay(){
         return 0.0;
     }
+    string toString();
 private:
     float hours;
 };

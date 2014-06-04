@@ -15,6 +15,7 @@ Intern::Intern( int id ){
     setId( id );
     setAge( 0 );
     setSex( 0 );
+    setIsPaid( false );
     setPayrate( 0.0 );
     setHours( 0.0 );
 }
@@ -50,4 +51,10 @@ float Intern::getPay(){
 
 bool Intern::getIsPaid(){
     return isPaid;
+}
+
+string Intern::toString(){
+    stringstream s;
+    s << "int" << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << isPaid << '\t' << payrate << '\t' << hours;
+    return s.str();
 }

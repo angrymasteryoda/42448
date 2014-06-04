@@ -21,6 +21,7 @@ public:
     float getHours();
     float getPay();
     bool getIsPaid();
+    string toString();
 private:
     float payrate;
     float hours;

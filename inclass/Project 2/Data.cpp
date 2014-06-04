@@ -11,10 +11,11 @@ using namespace std;
 
 /**
  * Constructor
- * @param records this is here just to fix a compile issue 
+ * @param filename
  */
-Data::Data( int records ){
-    totalRecords = records;
+Data::Data( string file ){
+    totalRecords = 0;
+    fileName = file;
 }
 
 /**
@@ -23,6 +24,7 @@ Data::Data( int records ){
  */
 Data::Data( const Data &obj ){
     totalRecords = obj.totalRecords;
+    fileName = obj.fileName;
     for( int i = 0; i < obj.employees.size(); i++ ){
         employees.push_back( obj.employees.at( i ) );
     }
@@ -36,6 +38,7 @@ Data::Data( const Data &obj ){
 
 void Data::operator = ( const Data &right ){
     totalRecords = right.totalRecords;
+    fileName = right.fileName;
     for( int i = 0; i < right.employees.size(); i++ ){
         employees.push_back( right.employees.at( i ) );
     }
@@ -57,6 +60,36 @@ void Data::pushBackIntern(Intern i ) {
 
 void Data::pushBackVolunteer(Volunteer v){
     volunteers.push_back( v );
+}
+
+void Data::save(){
+    save( getFileName() );
+}
+void Data::save( string fileName ) {
+    fstream file;
+    file.open( fileName, ios::out );
+    
+    for( int i = 0; i < employees.size(); i++ ){
+        file << employees.at( i ).toString() << '\n';
+    }
+    
+    for( int i = 0; i < interns.size(); i++ ){
+        file << interns.at( i ).toString() << '\n';
+    }
+    
+    for( int i = 0; i < volunteers.size(); i++ ){
+        file << volunteers.at( i ).toString() << '\n';
+    }
+    
+    file.close();
+}
+
+void Data::setFileName(string s ) {
+    fileName = s;
+}
+
+string Data::getFileName(){
+    return fileName;
 }
 
 vector<Employee> Data::getEmployees(){
