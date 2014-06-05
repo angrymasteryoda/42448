@@ -21,12 +21,12 @@ public:
     void setSex( int );
     string getFname();
     string getLname();
-    virtual string toString();
+    virtual string toString() = 0;
     int getId();
     int getAge();
     int getSex();
     virtual float getPay() = 0;
-private:
+protected:
     string fname;
     string lname;
     int id;

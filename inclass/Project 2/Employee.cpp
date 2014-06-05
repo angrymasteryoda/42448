@@ -49,7 +49,7 @@ float Employee::getPay(){
  */
 string Employee::toString(){
     stringstream s;
-    //s << "emp" << id << '\t' << fname << '\t' + lname << '\t' << age << '\t' << sex << '\t' << payrate << '\t' << hours;
-    s << "emp" << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getPayrate() << '\t' << getHours();
+    s << "emp" << id << '\t' << fname << '\t' + lname << '\t' << age << '\t' << sex << '\t' << payrate << '\t' << hours;
+//    s << "emp" << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getPayrate() << '\t' << getHours();
     return s.str();
 }
