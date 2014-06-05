@@ -28,7 +28,7 @@ void Employee::setPayrate( float f ){
 }
 
 void Employee::setHours( float hours ){
-    hours = hours;
+    this->hours = hours;
 }
 
 float Employee::getPayrate(){
@@ -49,7 +49,8 @@ float Employee::getPay(){
  */
 string Employee::toString(){
     stringstream s;
-    s << "emp" << '\t' << id << '\t' << fname << '\t' + lname << '\t' << age << '\t' << sex << '\t' << payrate << '\t' << hours;
+    //emp	1	michael	risher	22	1	8	5.91063e-39// sample output
+    s << "emp" << '\t' << id << '\t' << fname << '\t' + lname << '\t' << age << '\t' << sex << '\t' << payrate << '\t' << hours << "\t~";
 //    s << "emp" << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getPayrate() << '\t' << getHours();
     return s.str();
 }

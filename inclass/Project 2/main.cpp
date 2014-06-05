@@ -37,7 +37,7 @@ int main( int argc, char** argv ) {
                 build( data );
                 break;
             case 'l':
-                load();
+                load( data );
                 break;
             case 'q':
                 cout << "Bye.\n";
@@ -53,6 +53,7 @@ int main( int argc, char** argv ) {
  */
 void menu(){
     cout << "Press b ----> Build The Employee Table\n";
+    cout << "Press l ----> Load an Employee Table\n";
     cout << "Press q ----> To Quit\n";
 }
 
@@ -79,7 +80,7 @@ void build( Data &data ){
                 break;
         }
     }
-    while( option < 1 || option > 3 );
+    while( option != 4 );
     
     data.save();
 }
@@ -322,7 +323,7 @@ void load( Data &data ){
         string file;
         cout << "enter a filename to load from: ";
         cin.ignore();
-        cin.getline( cin, file );
+        getline( cin, file );
         data.load( file );
     }
 }

@@ -37,7 +37,7 @@ float Volunteer::getHours(){
  */
 string Volunteer::toString(){
     stringstream s;
-    //s << "vol" << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << hours;
-    s << "vol" << '\t' << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getHours();
+    s << "vol" << '\t' << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << hours << "\t~";
+//    s << "vol" << '\t' << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getHours();
     return s.str();
 }
