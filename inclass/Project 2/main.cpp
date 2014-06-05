@@ -14,10 +14,11 @@
 using namespace std;
 
 void menu();
-void build( Data );
-void buildEmployees( Data );
-void buildIntern( Data );
-void buildVolunteer( Data );
+void build( Data & );
+void buildEmployees( Data&);
+void buildIntern( Data & );
+void buildVolunteer( Data & );
+void load( Data & );
 
 int main( int argc, char** argv ) {
     char option;
@@ -34,6 +35,9 @@ int main( int argc, char** argv ) {
         switch( option ){
             case 'b':
                 build( data );
+                break;
+            case 'l':
+                load();
                 break;
             case 'q':
                 cout << "Bye.\n";
@@ -56,26 +60,26 @@ void menu(){
  * build the employee table
  * @param data
  */
-void build( Data data ){
+void build( Data &data ){
     int option = 0;
     do{
         cout << "What type of employee are you added?";
-        cout << "\n\t1 Regular paid employee.\n\t2 Intern.\n\t3 Volunteer\n";
+        cout << "\n\t1 Regular paid employee.\n\t2 Intern.\n\t3 Volunteer\n\t4 Main menu\n";
         cin >> option;
+        
+        switch ( option ) {
+            case 1:
+                buildEmployees( data );
+                break;
+            case 2:
+                buildIntern( data );
+                break;
+            case 3:
+                buildVolunteer( data );
+                break;
+        }
     }
     while( option < 1 || option > 3 );
-    
-    switch ( option ) {
-        case 1:
-            buildEmployees( data );
-            break;
-        case 2:
-            buildIntern( data );
-            break;
-        case 3:
-            buildVolunteer( data );
-            break;
-    }
     
     data.save();
 }
@@ -84,7 +88,7 @@ void build( Data data ){
  * build the employees and save
  * @param data
  */
-void buildEmployees( Data data ){
+void buildEmployees( Data &data ){
     char option;
     do {
         int inNum;
@@ -135,7 +139,7 @@ void buildEmployees( Data data ){
                 cin >> inFloat;
                 E.setHours( inFloat );
             }
-            while( inFloat > 0);
+            while( inFloat < 0);
         }
         
         option = '\0';
@@ -155,7 +159,7 @@ void buildEmployees( Data data ){
  * build the intern and save
  * @param data
  */
-void buildIntern( Data data ){
+void buildIntern( Data &data ){
     char option;
     do {
         int inNum;
@@ -219,7 +223,7 @@ void buildIntern( Data data ){
                 cin >> inFloat;
                 E.setHours( inFloat );
             }
-            while( inFloat > 0);
+            while( inFloat < 0);
         }
         
         option = '\0';
@@ -239,7 +243,7 @@ void buildIntern( Data data ){
  * build the volunteer and save
  * @param data
  */
-void buildVolunteer( Data data ){
+void buildVolunteer( Data &data ){
     char option;
     do {
         int inNum;
@@ -283,7 +287,7 @@ void buildVolunteer( Data data ){
                 cin >> inFloat;
                 E.setHours( inFloat );
             }
-            while( inFloat > 0);
+            while( inFloat < 0);
         }
         
         option = '\0';
@@ -297,4 +301,28 @@ void buildVolunteer( Data data ){
         while( option != 'y' && option != 'n' );
     }
     while( option != 'n' );
+}
+
+/**
+ * load db from a file
+ * @param 
+ */
+void load( Data &data ){
+    char option;
+    do{
+        cout << "load data from " << data.getFileName() << " or from another file ( y/n ): ";
+        cin >> option;
+    }
+    while( option != 'y' && option != 'n' );
+    
+    if( option == 'y' ){
+        data.load();
+    }
+    else {
+        string file;
+        cout << "enter a filename to load from: ";
+        cin.ignore();
+        cin.getline( cin, file );
+        data.load( file );
+    }
 }

@@ -1,0 +1,3 @@
+emp	1	michael	risher	22	1	8	5.91063e-39
+int	2	joe	doe	32	1	96	0	3.64299e-39
+vol	3	lol	wat	32	0	9

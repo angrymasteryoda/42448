@@ -15,7 +15,7 @@ using namespace std;
  */
 Data::Data( string file ){
     totalRecords = 0;
-    fileName = file;
+    fileName = file;   
 }
 
 /**
@@ -102,6 +102,21 @@ void Data::save( string fileName ) {
     }
     
     file.close();
+}
+
+/**
+ * load the data from the default save location
+ */
+void Data::load(){
+    load( getFileName() );
+}
+
+/**
+ * load the data from a s
+ * @param 
+ */
+void Data::load( string ){
+    
 }
 
 void Data::setFileName(string s ) {

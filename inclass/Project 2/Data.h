@@ -31,6 +31,8 @@ public:
     void pushBackVolunteer( Volunteer );
     void save();
     void save( string );
+    void load();
+    void load( string );
     void setFileName( string );
     string getFileName();
     vector<Employee> getEmployees();
