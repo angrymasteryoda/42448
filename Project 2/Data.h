@@ -41,7 +41,12 @@ public:
     void printEmployee( int );
     void printIntern( int );
     void printVolunteer( int );
+    void search( int, int num = 0, float fnum = 0 );
     void searchId( int );
+    void searchName( string, bool );
+    void searchAge( int );
+    void searchSex( char );
+    void searchPayrate( float );
     bool deleteById( int );
     string getFileName();
     vector<Employee> getEmployees();

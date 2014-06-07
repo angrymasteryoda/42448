@@ -283,6 +283,11 @@ void Data::printVolunteer( int index ){
     endl;
 }
 
+/**
+ * @deprecated
+ * search for a id of an employee
+ * @param id
+ */
 void Data::searchId( int id ){
     int found = 0;
     for( int i = 0; i < employees.size(); i++ ){
@@ -302,6 +307,160 @@ void Data::searchId( int id ){
         if ( id == volunteers.at( i ).getId() ){
             printVolunteer( i );
             found++;
+        }
+    }
+    
+    if( found == 0){
+        cout << "No Results\n";
+    }
+}
+
+/**
+ * search by name
+ * @param name
+ * @param isFirst
+ */
+void Data::searchName(string name, bool isFirst ){
+    int count = 0;
+    size_t found;
+    for( int i = 0; i < employees.size(); i++ ){
+        if( isFirst ){
+            found = employees.at( i ).getFname().find( name );
+        }
+        else{
+            found = employees.at( i ).getLname().find( name );
+        }
+        
+        if( found != string::npos ){
+            count++;
+            printEmployee( i );
+        }
+    }
+    for( int i = 0; i < interns.size(); i++ ){
+        if( isFirst ){
+            found = interns.at( i ).getFname().find( name );
+        }
+        else{
+            found = interns.at( i ).getLname().find( name );
+        }
+        
+        if( found != string::npos ){
+            count++;
+            printIntern( i );
+        }
+    }
+    
+    for( int i = 0; i < volunteers.size(); i++ ){
+        if( isFirst ){
+            found = volunteers.at( i ).getFname().find( name );
+        }
+        else{
+            found = volunteers.at( i ).getLname().find( name );
+        }
+        
+        if( found != string::npos ){
+            count++;
+            printVolunteer( i );
+        }
+    }
+    
+    if( count == 0 ){
+        cout << "No Results Found\n";
+    }
+}
+
+/**
+ * got tired of copying and pasting new search
+ * @param type 0 id, 1 age, 2 sex, 3 pay
+ * @param num
+ * @param fnum
+ */
+void Data::search( int type, int num, float fnum ){
+    // 0 id, 1 age, 2 sex, 3 pay
+    int found = 0;
+    for( int i = 0; i < employees.size(); i++ ){
+        switch( type ){
+            case 0:
+                if ( num == employees.at( i ).getId() ){
+                    printEmployee( i );
+                    found++;
+                }
+                break;
+            case 1:
+                if ( num == employees.at( i ).getAge() ){
+                    printEmployee( i );
+                    found++;
+                }
+                break;
+            case 2:
+                if ( num == employees.at( i ).getSex() ){
+                    printEmployee( i );
+                    found++;
+                }
+                break;
+            case 3:
+                if ( fnum == employees.at( i ).getPayrate() ){
+                    printEmployee( i );
+                    found++;
+                }
+                break;  
+        }
+    }
+    for( int i = 0; i < interns.size(); i++ ){
+        switch( type ){
+            case 0:
+                if ( num == interns.at( i ).getId() ){
+                    printIntern( i );
+                    found++;
+                }
+                break;
+            case 1:
+                if ( num == interns.at( i ).getAge() ){
+                    printIntern( i );
+                    found++;
+                }
+                break;
+            case 2:
+                if ( num == interns.at( i ).getSex() ){
+                    printIntern( i );
+                    found++;
+                }
+                break;
+            case 3:
+                if ( fnum == interns.at( i ).getPayrate() ){
+                    printIntern( i );
+                    found++;
+                }
+                break;  
+        }
+    }
+    
+    for( int i = 0; i < volunteers.size(); i++ ){
+        switch( type ){
+            case 0:
+                if ( num == volunteers.at( i ).getId() ){
+                    printVolunteer( i );
+                    found++;
+                }
+                break;
+            case 1:
+                if ( num == volunteers.at( i ).getAge() ){
+                    printVolunteer( i );
+                    found++;
+                }
+                break;
+            case 2:
+                if ( num == volunteers.at( i ).getSex() ){
+                    printVolunteer( i );
+                    found++;
+                }
+                break;
+            case 3:
+                if ( fnum == 0 ){
+                    printVolunteer( i );
+                    found++;
+                }
+                break;  
         }
     }
     

@@ -384,6 +384,10 @@ void deleteEmp( Data &data ){
     }    
 }
 
+/**
+ * search the employee by all the properties of the classes
+ * @param data
+ */
 void search( Data &data ){
     char option;
     do {
@@ -391,13 +395,45 @@ void search( Data &data ){
         cout << "Enter an option from the menu\n";
         cin >> option;
         
+        string name;
+        int num;
+        float fnum;
+        char sex;
         switch( option ){
             case 'i':
-                int id;
                 cout << "Enter an id to search for: ";
-                cin >> id;
+                cin >> num;
                 listHeader();
-                data.searchId( id );
+                data.searchId( num );
+                break;
+            case 'f':
+            case 'l':
+                cout << "Enter a name to search for:\n";
+                cin.ignore();
+                getline( cin, name );
+                listHeader();
+                data.searchName( name, ( option == 'f' ? true : false ) );
+                break;
+            case 'a':
+                cout << "Enter an age to search for: ";
+                cin >> num;
+                listHeader();
+                data.search( 1, num );
+                break;
+            case 's':
+                do{
+                    cout << "Enter the sex to search for (f/m): ";
+                    cin >> sex;
+                }
+                while( sex != 'f' && sex != 'm');
+                listHeader();
+                data.search( 2, ( sex == 'f' ? 0 : 1 ) );
+                break;
+            case 'p':
+                cout << "Enter an pay rate to search for: ";
+                cin >> fnum;
+                listHeader();
+                data.search( 3, 0, fnum );
                 break;
             case 'q':
                 break;
@@ -405,9 +441,17 @@ void search( Data &data ){
     } while( option != 'q' );
 }
 
+/**
+ * menu for searching
+ */
 void searchMenu(){
     cout << endl;
     cout << "Press i ----> Search by id\n";
+    cout << "Press f ----> Search by First Name\n";
+    cout << "Press l ----> Search by Last Name\n";
+    cout << "Press a ----> Search by Age\n";
+    cout << "Press s ----> Search by Sex\n";
+    cout << "Press p ----> Search by Pay Rate\n";
     cout << "Press q ----> Back to Main Menu\n";
 }
 
