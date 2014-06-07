@@ -16,6 +16,7 @@ class Volunteer:public Person{
 public:
     Volunteer( int );
     void setHours( float );
+    int getType(){ return 2; };
     float getHours();
     float getPay(){
         return 0.0;

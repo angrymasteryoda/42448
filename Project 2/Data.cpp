@@ -7,8 +7,6 @@
 
 #include "Data.h"
 
-#include <iostream>
-
 using namespace std;
 
 /**
@@ -118,6 +116,9 @@ void Data::load(){
  * @param 
  */
 void Data::load( string filename ){
+    //clear the current data
+    clear();
+    
     fstream file;
     file.open( filename.c_str(), ios::in );
     //check bad file
@@ -200,21 +201,68 @@ void Data::load( string filename ){
             vol.setHours( atof( data[i].at( 6 ).c_str() ) );
             pushBackVolunteer( vol );
         }
-        
-//        for( int j = 0; j < data[i].size(); j++ ){
-//            string temp = data[i].at( j );
-//            cout << temp << ", ";
-//        }
-//        cout << endl;
     }
+}
+
+/**
+ * clears the stored data so it can load new data from file
+ */
+void Data::clear(){
+    totalRecords = 0;
+    employees.clear();
+    interns.clear();
+    volunteers.clear();
 }
 
 void Data::setFileName(string s ) {
     fileName = s;
 }
 
+void Data::printFormatedPerson( int type ){
+    if( type == 0 ){
+        for( int i = 0; i < employees.size(); i++ ){
+            cout << '|'<< setw( 6 ) << employees.at( i ).getId() << " |" <<
+                setw( 18 ) << employees.at( i ).getFname() << " |" << 
+                setw( 18 ) << employees.at( i ).getLname() << " |" << 
+                setw( 4 ) << employees.at( i ).getAge() << " |" << 
+                setw( 4 ) << employees.at( i ).getSex() << " |" << 
+                setw( 9 ) << employees.at( i ).getPayrate() << " |" <<
+                setw( 6 ) << employees.at( i ).getHours() << " |" << 
+            endl;
+        }
+    }
+    else if( type == 1 ){
+        for( int j = 0; j < interns.size(); j++ ){
+            cout << '|'<< setw( 6 ) << interns.at( j ).getId() << " |" <<
+                setw( 18 ) << interns.at( j ).getFname() << " |" << 
+                setw( 18 ) << interns.at( j ).getLname() << " |" << 
+                setw( 4 ) << interns.at( j ).getAge() << " |" << 
+                setw( 4 ) << interns.at( j ).getSex() << " |" << 
+                setw( 9 ) << interns.at( j ).getPayrate() << " |" <<
+                setw( 6 ) << interns.at( j ).getHours() << " |" << 
+            endl;
+        }
+    }
+    else if( type == 2 ){
+        for( int k = 0; k < volunteers.size(); k++ ){
+            cout << '|'<< setw( 6 ) << volunteers.at( k ).getId() << " |" <<
+                setw( 18 ) << volunteers.at( k ).getFname() << " |" << 
+                setw( 18 ) << volunteers.at( k ).getLname() << " |" << 
+                setw( 4 ) << volunteers.at( k ).getAge() << " |" << 
+                setw( 4 ) << volunteers.at( k ).getSex() << " |" << 
+                setw( 9 ) << 0 << " |" <<
+                setw( 6 ) << volunteers.at( k ).getHours() << " |" << 
+            endl;
+        }
+    }   
+    else {
+        return;
+    }
+}
+
 int Data::getTotalRecords(){
-    return employees.size() + interns.size() + volunteers.size();
+    totalRecords = employees.size() + interns.size() + volunteers.size();
+    return totalRecords;
 }
 
 string Data::getFileName(){

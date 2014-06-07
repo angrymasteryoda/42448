@@ -12,6 +12,8 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <iostream>
+#include <iomanip>
 
 #include "Employee.h"
 #include "Intern.h"
@@ -26,6 +28,7 @@ public:
     Data( const Data & );
     void operator=( const Data & );
     int getTotalRecords();
+    int getTypes(){ return 3; }
     void pushBackEmployee( Employee );
     void pushBackIntern( Intern );
     void pushBackVolunteer( Volunteer );
@@ -34,16 +37,19 @@ public:
     void load();
     void load( string );
     void setFileName( string );
+    void printFormatedPerson( int );
     string getFileName();
     vector<Employee> getEmployees();
     vector<Intern> getInterns();
     vector<Volunteer> getVolunteers();
 private:
+    void clear();
     int totalRecords;
     string fileName;
     vector<Employee> employees;
     vector<Intern> interns;
     vector<Volunteer> volunteers;
+    
 };
 
 #endif	/* DATA_H */

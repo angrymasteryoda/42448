@@ -16,6 +16,7 @@ public:
     Employee( int id );
     void setPayrate( float );
     void setHours( float );
+    int getType(){ return 0; };
     float getPayrate();
     float getHours();
     float getPay();

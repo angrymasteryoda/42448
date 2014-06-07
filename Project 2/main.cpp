@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
 #include <string>
 
@@ -19,11 +20,13 @@ void buildEmployees( Data&);
 void buildIntern( Data & );
 void buildVolunteer( Data & );
 void load( Data & );
+void list( Data & );
 
 int main( int argc, char** argv ) {
     char option;
     
     Data data( "save.txt" );
+    data.load( "save.txt" );
     
     cout << "Welcome to employee management 1.0\n";
     do {
@@ -38,6 +41,9 @@ int main( int argc, char** argv ) {
                 break;
             case 'l':
                 load( data );
+                break;
+            case 'i':
+                list( data );
                 break;
             case 'q':
                 cout << "Bye.\n";
@@ -54,6 +60,7 @@ int main( int argc, char** argv ) {
 void menu(){
     cout << "Press b ----> Build The Employee Table\n";
     cout << "Press l ----> Load an Employee Table\n";
+    cout << "Press i ----> List All Employee Data\n";
     cout << "Press q ----> To Quit\n";
 }
 
@@ -325,5 +332,17 @@ void load( Data &data ){
         cin.ignore();
         getline( cin, file );
         data.load( file );
+    }
+}
+
+/**
+ * list all the employee data
+ * @param data
+ */
+void list( Data &data ){
+    cout << '|'<< setw( 8 ) << "Id |" << setw( 20 ) << "Fname |" << setw( 20 ) << "Lname |" << " Age |" << " Sex |"
+            << " Pay Rate |" << " Hours |" << endl;
+    for( int i = 0; i < data.getTypes(); i++ ) {
+        data.printFormatedPerson( i );
     }
 }

@@ -17,6 +17,7 @@ public:
     void setPayrate( float );
     void setHours( float );
     void setIsPaid( bool );
+    int getType(){ return 1; };
     float getPayrate();
     float getHours();
     float getPay();
