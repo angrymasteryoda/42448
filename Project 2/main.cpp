@@ -21,12 +21,15 @@ void buildIntern( Data & );
 void buildVolunteer( Data & );
 void load( Data & );
 void list( Data & );
+void deleteEmp( Data & );
+void search( Data & );
+void searchMenu();
 
 int main( int argc, char** argv ) {
     char option;
     
     Data data( "save.txt" );
-    data.load( "save.txt" );
+    data.load( "lol.txt" );
     
     cout << "Welcome to employee management 1.0\n";
     do {
@@ -45,6 +48,12 @@ int main( int argc, char** argv ) {
             case 'i':
                 list( data );
                 break;
+            case 'd':
+                deleteEmp( data );
+                break;
+            case 's':
+                search( data );
+                break;
             case 'q':
                 cout << "Bye.\n";
                 break;
@@ -58,9 +67,12 @@ int main( int argc, char** argv ) {
  * Print the main menu for the program
  */
 void menu(){
+    cout << endl;
     cout << "Press b ----> Build The Employee Table\n";
     cout << "Press l ----> Load an Employee Table\n";
-    cout << "Press i ----> List All Employee Data\n";
+    cout << "Press i ----> List all Employee Data\n";
+    cout << "Press d ----> Delete an Employee\n";
+    cout << "Press s ----> Search for an Employee\n";
     cout << "Press q ----> To Quit\n";
 }
 
@@ -346,3 +358,44 @@ void list( Data &data ){
         data.printFormatedPerson( i );
     }
 }
+
+/**
+ * delete employee by id
+ * @param data
+ */
+void deleteEmp( Data &data ){
+    int id;
+    do{
+        cout << "Enter the id of the employee you want to delete or -1 to cancel\n";
+        cin >> id;
+    }
+    while( id == 0);
+    
+    if( data.deleteById( id ) ) {
+        cout << "Deleted successfully\n";
+    }
+    else {
+        cout << "Could not find that employee\n";
+    }    
+}
+
+void search( Data &data ){
+    char option;
+    do {
+        searchMenu();
+        cout << "Enter an option from the menu\n";
+        cin >> option;
+        
+        switch( option ){
+            
+            case 'q':
+                break;
+        }
+    } while( option != 'q' );
+}
+
+void searchMenu(){
+    cout << endl;
+    cout << "Press i ----> Search by id\n";
+}
+

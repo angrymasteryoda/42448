@@ -53,3 +53,7 @@ int Person::getAge(){
 int Person::getSex(){
     return sex;
 }
+
+char Person::getSexLetter(){
+    return sex == 0 ? 'F' : 'M';
+}

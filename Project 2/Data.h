@@ -38,6 +38,7 @@ public:
     void load( string );
     void setFileName( string );
     void printFormatedPerson( int );
+    bool deleteById( int );
     string getFileName();
     vector<Employee> getEmployees();
     vector<Intern> getInterns();

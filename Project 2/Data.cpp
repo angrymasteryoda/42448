@@ -142,7 +142,6 @@ void Data::load( string filename ){
     //rewind the file
     file.clear();
     file.seekg( 0L, ios::beg );
-    cout << line << endl;
     string type;
     vector<string> data[objCount];
     bool isReadingObj = false;
@@ -218,6 +217,10 @@ void Data::setFileName(string s ) {
     fileName = s;
 }
 
+/**
+ * print out all employees
+ * @param type
+ */
 void Data::printFormatedPerson( int type ){
     if( type == 0 ){
         for( int i = 0; i < employees.size(); i++ ){
@@ -225,7 +228,7 @@ void Data::printFormatedPerson( int type ){
                 setw( 18 ) << employees.at( i ).getFname() << " |" << 
                 setw( 18 ) << employees.at( i ).getLname() << " |" << 
                 setw( 4 ) << employees.at( i ).getAge() << " |" << 
-                setw( 4 ) << employees.at( i ).getSex() << " |" << 
+                setw( 4 ) << employees.at( i ).getSexLetter() << " |" << 
                 setw( 9 ) << employees.at( i ).getPayrate() << " |" <<
                 setw( 6 ) << employees.at( i ).getHours() << " |" << 
             endl;
@@ -237,7 +240,7 @@ void Data::printFormatedPerson( int type ){
                 setw( 18 ) << interns.at( j ).getFname() << " |" << 
                 setw( 18 ) << interns.at( j ).getLname() << " |" << 
                 setw( 4 ) << interns.at( j ).getAge() << " |" << 
-                setw( 4 ) << interns.at( j ).getSex() << " |" << 
+                setw( 4 ) << interns.at( j ).getSexLetter() << " |" << 
                 setw( 9 ) << interns.at( j ).getPayrate() << " |" <<
                 setw( 6 ) << interns.at( j ).getHours() << " |" << 
             endl;
@@ -249,7 +252,7 @@ void Data::printFormatedPerson( int type ){
                 setw( 18 ) << volunteers.at( k ).getFname() << " |" << 
                 setw( 18 ) << volunteers.at( k ).getLname() << " |" << 
                 setw( 4 ) << volunteers.at( k ).getAge() << " |" << 
-                setw( 4 ) << volunteers.at( k ).getSex() << " |" << 
+                setw( 4 ) << volunteers.at( k ).getSexLetter() << " |" << 
                 setw( 9 ) << 0 << " |" <<
                 setw( 6 ) << volunteers.at( k ).getHours() << " |" << 
             endl;
@@ -258,6 +261,36 @@ void Data::printFormatedPerson( int type ){
     else {
         return;
     }
+}
+
+/**
+ * delete a employee by id
+ * @param id
+ * @return 
+ */
+bool Data::deleteById( int id ) {
+    for( int i = 0; i < employees.size(); i++ ){
+        if ( id == employees.at( i ).getId() ){
+            employees.erase( employees.begin() + i );
+            return true;
+        }
+    }
+    for( int i = 0; i < interns.size(); i++ ){
+        if ( id == interns.at( i ).getId() ){
+            interns.erase( interns.begin() + i );
+            return true;
+        }
+    }
+    
+    for( int i = 0; i < volunteers.size(); i++ ){
+        if ( id == volunteers.at( i ).getId() ){
+            volunteers.erase( volunteers.begin() + i );
+            return true;
+        }
+    }
+    
+    //failed to delete by this point
+    return false;
 }
 
 int Data::getTotalRecords(){
