@@ -213,10 +213,6 @@ void Data::clear(){
     volunteers.clear();
 }
 
-void Data::setFileName(string s ) {
-    fileName = s;
-}
-
 /**
  * print out all employees
  * @param type
@@ -224,43 +220,98 @@ void Data::setFileName(string s ) {
 void Data::printFormatedPerson( int type ){
     if( type == 0 ){
         for( int i = 0; i < employees.size(); i++ ){
-            cout << '|'<< setw( 6 ) << employees.at( i ).getId() << " |" <<
-                setw( 18 ) << employees.at( i ).getFname() << " |" << 
-                setw( 18 ) << employees.at( i ).getLname() << " |" << 
-                setw( 4 ) << employees.at( i ).getAge() << " |" << 
-                setw( 4 ) << employees.at( i ).getSexLetter() << " |" << 
-                setw( 9 ) << employees.at( i ).getPayrate() << " |" <<
-                setw( 6 ) << employees.at( i ).getHours() << " |" << 
-            endl;
+            printEmployee( i );
         }
     }
     else if( type == 1 ){
         for( int j = 0; j < interns.size(); j++ ){
-            cout << '|'<< setw( 6 ) << interns.at( j ).getId() << " |" <<
-                setw( 18 ) << interns.at( j ).getFname() << " |" << 
-                setw( 18 ) << interns.at( j ).getLname() << " |" << 
-                setw( 4 ) << interns.at( j ).getAge() << " |" << 
-                setw( 4 ) << interns.at( j ).getSexLetter() << " |" << 
-                setw( 9 ) << interns.at( j ).getPayrate() << " |" <<
-                setw( 6 ) << interns.at( j ).getHours() << " |" << 
-            endl;
+            printIntern( j );
         }
     }
     else if( type == 2 ){
         for( int k = 0; k < volunteers.size(); k++ ){
-            cout << '|'<< setw( 6 ) << volunteers.at( k ).getId() << " |" <<
-                setw( 18 ) << volunteers.at( k ).getFname() << " |" << 
-                setw( 18 ) << volunteers.at( k ).getLname() << " |" << 
-                setw( 4 ) << volunteers.at( k ).getAge() << " |" << 
-                setw( 4 ) << volunteers.at( k ).getSexLetter() << " |" << 
-                setw( 9 ) << 0 << " |" <<
-                setw( 6 ) << volunteers.at( k ).getHours() << " |" << 
-            endl;
+            printVolunteer( k );
         }
     }   
     else {
         return;
     }
+}
+
+/**
+ * print out a single employee
+ * @param index
+ */
+void Data::printEmployee( int index ){
+    cout << '|'<< setw( 6 ) << employees.at( index ).getId() << " |" <<
+        setw( 18 ) << employees.at( index ).getFname() << " |" << 
+        setw( 18 ) << employees.at( index ).getLname() << " |" << 
+        setw( 4 ) << employees.at( index ).getAge() << " |" << 
+        setw( 4 ) << employees.at( index ).getSexLetter() << " |" << 
+        setw( 9 ) << employees.at( index ).getPayrate() << " |" <<
+        setw( 6 ) << employees.at( index ).getHours() << " |" << 
+    endl;
+}
+
+/**
+ * print out a single employee
+ * @param index
+ */
+void Data::printIntern( int index ){
+    cout << '|'<< setw( 6 ) << interns.at( index ).getId() << " |" <<
+        setw( 18 ) << interns.at( index ).getFname() << " |" << 
+        setw( 18 ) << interns.at( index ).getLname() << " |" << 
+        setw( 4 ) << interns.at( index ).getAge() << " |" << 
+        setw( 4 ) << interns.at( index ).getSexLetter() << " |" << 
+        setw( 9 ) << interns.at( index ).getPayrate() << " |" <<
+        setw( 6 ) << interns.at( index ).getHours() << " |" << 
+    endl;
+}
+
+/**
+ * print out a single employee
+ * @param index
+ */
+void Data::printVolunteer( int index ){
+    cout << '|'<< setw( 6 ) << volunteers.at( index ).getId() << " |" <<
+        setw( 18 ) << volunteers.at( index ).getFname() << " |" << 
+        setw( 18 ) << volunteers.at( index ).getLname() << " |" << 
+        setw( 4 ) << volunteers.at( index ).getAge() << " |" << 
+        setw( 4 ) << volunteers.at( index ).getSexLetter() << " |" << 
+        setw( 9 ) << 0 << " |" <<
+        setw( 6 ) << volunteers.at( index ).getHours() << " |" << 
+    endl;
+}
+
+void Data::searchId( int id ){
+    int found = 0;
+    for( int i = 0; i < employees.size(); i++ ){
+        if ( id == employees.at( i ).getId() ){
+            printEmployee( i );
+            found++;
+        }
+    }
+    for( int i = 0; i < interns.size(); i++ ){
+        if ( id == interns.at( i ).getId() ){
+            printIntern( i );
+            found++;
+        }
+    }
+    
+    for( int i = 0; i < volunteers.size(); i++ ){
+        if ( id == volunteers.at( i ).getId() ){
+            printVolunteer( i );
+            found++;
+        }
+    }
+    
+    if( found == 0){
+        cout << "No Results\n";
+    }
+}
+
+void Data::setFileName(string s ) {
+    fileName = s;
 }
 
 /**

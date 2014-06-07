@@ -21,6 +21,7 @@ void buildIntern( Data & );
 void buildVolunteer( Data & );
 void load( Data & );
 void list( Data & );
+void listHeader();
 void deleteEmp( Data & );
 void search( Data & );
 void searchMenu();
@@ -352,11 +353,15 @@ void load( Data &data ){
  * @param data
  */
 void list( Data &data ){
-    cout << '|'<< setw( 8 ) << "Id |" << setw( 20 ) << "Fname |" << setw( 20 ) << "Lname |" << " Age |" << " Sex |"
-            << " Pay Rate |" << " Hours |" << endl;
+    listHeader();
     for( int i = 0; i < data.getTypes(); i++ ) {
         data.printFormatedPerson( i );
     }
+}
+
+void listHeader(){
+    cout << '|'<< setw( 8 ) << "Id |" << setw( 20 ) << "Fname |" << setw( 20 ) << "Lname |" << " Age |" << " Sex |"
+            << " Pay Rate |" << " Hours |" << endl;
 }
 
 /**
@@ -387,7 +392,13 @@ void search( Data &data ){
         cin >> option;
         
         switch( option ){
-            
+            case 'i':
+                int id;
+                cout << "Enter an id to search for: ";
+                cin >> id;
+                listHeader();
+                data.searchId( id );
+                break;
             case 'q':
                 break;
         }
@@ -397,5 +408,6 @@ void search( Data &data ){
 void searchMenu(){
     cout << endl;
     cout << "Press i ----> Search by id\n";
+    cout << "Press q ----> Back to Main Menu\n";
 }
 
