@@ -33,7 +33,7 @@ void Intern::setHours( float hours ){
 }
 
 void Intern::setIsPaid( bool flag ){
-    
+    isPaid = flag;
 }
 
 float Intern::getPayrate(){
@@ -63,7 +63,7 @@ bool Intern::getIsPaid(){
  */
 string Intern::toString(){
     stringstream s;
-    s << "int" << '\t' << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << isPaid << '\t' << payrate << '\t' << hours << "\t~";
+    s << "int" << '\t' << id << '\t' << fname << '\t' << lname << '\t' << age << '\t' << sex << '\t' << ( isPaid ? 1 : 0 ) << '\t' << payrate << '\t' << hours << "\t~";
 //    s << "int" << '\t'  << getId() << '\t' <<  getFname() << '\t' << getLname() << '\t' << getAge() << '\t' << getSex() << '\t' << getIsPaid() << '\t' << getPayrate() << '\t' << getHours();
     return s.str();
 }

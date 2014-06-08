@@ -23,6 +23,7 @@
       <itemPath>Person.h</itemPath>
       <itemPath>Volunteer.cpp</itemPath>
       <itemPath>Volunteer.h</itemPath>
+      <itemPath>dataImporter.js</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

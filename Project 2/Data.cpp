@@ -185,7 +185,8 @@ void Data::load( string filename ){
             in.setLname( data[i].at( 3 ) );
             in.setAge( atoi( data[i].at( 4 ).c_str() ) );
             in.setSex( atoi( data[i].at( 5 ).c_str() ) );
-            in.setIsPaid( (bool)atoi( data[i].at( 6 ).c_str() ) );
+            bool isPaid = ( atoi( data[i].at( 6 ).c_str() ) == 0 ? false : true );
+            in.setIsPaid( isPaid );
             in.setPayrate( atof( data[i].at( 7 ).c_str() ) );
             in.setHours( atof( data[i].at( 8 ).c_str() ) );
             pushBackIntern( in );
@@ -241,46 +242,68 @@ void Data::printFormatedPerson( int type ){
 /**
  * print out a single employee
  * @param index
+ * @param isPay
  */
-void Data::printEmployee( int index ){
+void Data::printEmployee( int index, bool isPay ){
     cout << '|'<< setw( 6 ) << employees.at( index ).getId() << " |" <<
         setw( 18 ) << employees.at( index ).getFname() << " |" << 
-        setw( 18 ) << employees.at( index ).getLname() << " |" << 
-        setw( 4 ) << employees.at( index ).getAge() << " |" << 
+        setw( 18 ) << employees.at( index ).getLname() << " |"; 
+    if ( !isPay ) {
+        cout << setw( 4 ) << employees.at( index ).getAge() << " |" << 
         setw( 4 ) << employees.at( index ).getSexLetter() << " |" << 
         setw( 9 ) << employees.at( index ).getPayrate() << " |" <<
-        setw( 6 ) << employees.at( index ).getHours() << " |" << 
-    endl;
+        setw( 6 ) << employees.at( index ).getHours() << " |"; 
+    }
+    else{
+        cout << setw( 9 ) << employees.at( index ).getPay() << " |";
+    }     
+    cout << " empl |";
+    cout << endl;
 }
 
 /**
  * print out a single employee
  * @param index
+ * @param isPay
  */
-void Data::printIntern( int index ){
+void Data::printIntern( int index, bool isPay ){
+    Intern intern = interns.at( index );
     cout << '|'<< setw( 6 ) << interns.at( index ).getId() << " |" <<
         setw( 18 ) << interns.at( index ).getFname() << " |" << 
-        setw( 18 ) << interns.at( index ).getLname() << " |" << 
-        setw( 4 ) << interns.at( index ).getAge() << " |" << 
+        setw( 18 ) << interns.at( index ).getLname() << " |";
+    if( !isPay ){
+        cout << setw( 4 ) << interns.at( index ).getAge() << " |" << 
         setw( 4 ) << interns.at( index ).getSexLetter() << " |" << 
         setw( 9 ) << interns.at( index ).getPayrate() << " |" <<
-        setw( 6 ) << interns.at( index ).getHours() << " |" << 
-    endl;
+        setw( 6 ) << interns.at( index ).getHours() << " |";
+    }
+    else{
+        cout << setw( 9 ) << interns.at( index ).getPay() << " |";
+    }
+    cout << " inte |";
+    cout << endl;
 }
 
 /**
  * print out a single employee
  * @param index
+ * @param isPay
  */
-void Data::printVolunteer( int index ){
+void Data::printVolunteer( int index, bool isPay ){
     cout << '|'<< setw( 6 ) << volunteers.at( index ).getId() << " |" <<
         setw( 18 ) << volunteers.at( index ).getFname() << " |" << 
-        setw( 18 ) << volunteers.at( index ).getLname() << " |" << 
-        setw( 4 ) << volunteers.at( index ).getAge() << " |" << 
+        setw( 18 ) << volunteers.at( index ).getLname() << " |";
+    if ( !isPay ){
+        cout << setw( 4 ) << volunteers.at( index ).getAge() << " |" << 
         setw( 4 ) << volunteers.at( index ).getSexLetter() << " |" << 
         setw( 9 ) << 0 << " |" <<
-        setw( 6 ) << volunteers.at( index ).getHours() << " |" << 
-    endl;
+        setw( 6 ) << volunteers.at( index ).getHours() << " |";
+    }
+    else{
+        cout << setw( 9 ) << volunteers.at( index ).getPay() << " |";
+    }
+    cout << " volu |";
+    cout << endl;
 }
 
 /**
@@ -466,6 +489,62 @@ void Data::search( int type, int num, float fnum ){
     
     if( found == 0){
         cout << "No Results\n";
+    }
+}
+
+/**
+ * set the hours worked for an employee
+ * @param id
+ * @param hours
+ */
+void Data::setHours( int id, float hours ){
+    for( int i = 0; i < employees.size(); i++ ){
+        if ( id == employees.at( i ).getId() ){
+            employees.at( i ).setHours( hours );
+        }
+    }
+    for( int i = 0; i < interns.size(); i++ ){
+        if ( id == interns.at( i ).getId() ){
+            interns.at( i ).setHours( hours );
+        }
+    }
+    
+    for( int i = 0; i < volunteers.size(); i++ ){
+        if ( id == volunteers.at( i ).getId() ){
+            volunteers.at( i ).setHours( hours );
+        }
+    }
+}
+
+/**
+ * get pay for one employee or all of them
+ * @param id
+ */
+void Data::getPay( int id ) {
+    for( int i = 0; i < employees.size(); i++ ){
+        if ( id != -1 && id == employees.at( i ).getId() ){
+            printEmployee( i, true );
+        }
+        else if( id == -1) {
+            printEmployee( i, true );
+        }
+    }
+    for( int i = 0; i < interns.size(); i++ ){
+        if ( id != -1 && id == interns.at( i ).getId() ){
+            printIntern( i, true );
+        }
+        else if( id == -1) {
+            printIntern( i, true );
+        }
+    }
+    
+    for( int i = 0; i < volunteers.size(); i++ ){
+        if ( id != -1 && id == volunteers.at( i ).getId() ){
+            printVolunteer( i, true );
+        }
+        else if( id == -1) {
+            printVolunteer( i, true );
+        }
     }
 }
 

@@ -21,10 +21,12 @@ void buildIntern( Data & );
 void buildVolunteer( Data & );
 void load( Data & );
 void list( Data & );
-void listHeader();
+void listHeader( bool ispay = false );
 void deleteEmp( Data & );
 void search( Data & );
 void searchMenu();
+void hours( Data & );
+void pay( Data & );
 
 int main( int argc, char** argv ) {
     char option;
@@ -55,6 +57,12 @@ int main( int argc, char** argv ) {
             case 's':
                 search( data );
                 break;
+            case 'h':
+                hours( data );
+                break;
+            case 'p':
+                pay( data );
+                break;
             case 'q':
                 cout << "Bye.\n";
                 break;
@@ -74,6 +82,8 @@ void menu(){
     cout << "Press i ----> List all Employee Data\n";
     cout << "Press d ----> Delete an Employee\n";
     cout << "Press s ----> Search for an Employee\n";
+    cout << "Press h ----> Set Hours for Employees\n";
+    cout << "Press p ----> View Payment Info\n";
     cout << "Press q ----> To Quit\n";
 }
 
@@ -359,9 +369,14 @@ void list( Data &data ){
     }
 }
 
-void listHeader(){
-    cout << '|'<< setw( 8 ) << "Id |" << setw( 20 ) << "Fname |" << setw( 20 ) << "Lname |" << " Age |" << " Sex |"
-            << " Pay Rate |" << " Hours |" << endl;
+void listHeader( bool isPay ){
+    if( isPay ){
+        cout << '|'<< setw( 8 ) << "Id |" << setw( 20 ) << "Fname |" << setw( 20 ) << "Lname |" << setw( 11 ) << " Pay |" << " Type |" << endl;
+    }
+    else{
+        cout << '|'<< setw( 8 ) << "Id |" << setw( 20 ) << "Fname |" << setw( 20 ) << "Lname |" << " Age |" << " Sex |"
+            << " Pay Rate |" << " Hours |" << " Type |" << endl;
+    }
 }
 
 /**
@@ -455,3 +470,41 @@ void searchMenu(){
     cout << "Press q ----> Back to Main Menu\n";
 }
 
+/**
+ * set the hours worked for employees
+ * @param data
+ */
+void hours( Data &data ){
+    int id;
+    float hours;
+    char option;
+    do{
+        cout << "Enter the id of the employee: ";
+        cin >> id;
+        do{
+            cout << "Enter their hours worked (hours >= 0): ";
+            cin >> hours;
+        }
+        while( hours < 0 );
+        data.setHours( id, hours );
+        do{
+            cout << "Enter another y/n\n";
+            cin >> option;
+        }
+        while( option != 'y' && option != 'n' );
+    }
+    while( option != 'n' );
+    
+}
+
+/**
+ * get the pay for one or all employees
+ * @param $data
+ */
+void pay( Data &data ){
+    int id;
+    cout << "Enter the id of the employee or -1 for all employees: ";
+    cin >> id;
+    listHeader( true );
+    data.getPay( id );
+}
