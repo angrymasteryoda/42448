@@ -202,6 +202,7 @@ void Data::load( string filename ){
             pushBackVolunteer( vol );
         }
     }
+    save();
 }
 
 /**
@@ -548,6 +549,139 @@ void Data::getPay( int id ) {
     }
 }
 
+/**
+ * Edit the employee
+ * @param id
+ */
+void Data::edit( int id ){
+    if ( isUnqiueId( id ) ){
+        cout << "No Employee with That Id\n";
+        return;
+    }
+    
+    char option;
+    do{
+        cout << "Edit menu\n";
+        cout << "Press f ----> Edit First Name\n";
+        cout << "Press l ----> Edit Last Name\n";
+        cout << "Press a ----> Edit Age\n";
+        cout << "Press s ----> Edit Sex\n";
+        cout << "Press p ----> Edit Pay Rate\n";
+        cout << "Press h ----> Edit Hours\n";
+        cout << "Press q ----> Stop Editing\n";
+        cin >> option;
+        
+        string str;
+        int num;
+        float fnum;
+        switch( option ){
+            case 'f':
+                cout << "Enter new first name\n";
+                cin.ignore();
+                getline( cin, str );
+                for( int i = 0; i < employees.size(); i++ ){
+                    if ( id == employees.at( i ).getId() ){
+                        employees.at( i ).setFname( str );
+                    }
+                }
+                for( int i = 0; i < interns.size(); i++ ){
+                    if ( id == interns.at( i ).getId() ){
+                        interns.at( i ).setFname( str );
+                    }
+                }
+                for( int i = 0; i < volunteers.size(); i++ ){
+                    if ( id == volunteers.at( i ).getId() ){
+                        volunteers.at( i ).setFname( str );
+                    }
+                }
+                break;
+            case 'l':
+                cout << "Enter new last name\n";
+                cin.ignore();
+                getline( cin, str );
+                for( int i = 0; i < employees.size(); i++ ){
+                    if ( id == employees.at( i ).getId() ){
+                        employees.at( i ).setLname( str );
+                    }
+                }
+                for( int i = 0; i < interns.size(); i++ ){
+                    if ( id == interns.at( i ).getId() ){
+                        interns.at( i ).setLname( str );
+                    }
+                }
+                for( int i = 0; i < volunteers.size(); i++ ){
+                    if ( id == volunteers.at( i ).getId() ){
+                        volunteers.at( i ).setLname( str );
+                    }
+                }
+                break;
+            case 'a':
+                cout << "Enter new age\n";
+                cin >> num;
+                for( int i = 0; i < employees.size(); i++ ){
+                    if ( id == employees.at( i ).getId() ){
+                        employees.at( i ).setAge( num );
+                    }
+                }
+                for( int i = 0; i < interns.size(); i++ ){
+                    if ( id == interns.at( i ).getId() ){
+                        interns.at( i ).setAge( num );
+                    }
+                }
+                for( int i = 0; i < volunteers.size(); i++ ){
+                    if ( id == volunteers.at( i ).getId() ){
+                        volunteers.at( i ).setAge( num );
+                    }
+                }
+                break;
+            case 's':
+                do{
+                    cout << "Enter new sex\n";
+                    cin >> option;
+                }
+                while( option != 'f' && option != 'm' );
+                for( int i = 0; i < employees.size(); i++ ){
+                    if ( id == employees.at( i ).getId() ){
+                        employees.at( i ).setSex( ( option == 'f' ? 0 : 1 ) );
+                    }
+                }
+                for( int i = 0; i < interns.size(); i++ ){
+                    if ( id == interns.at( i ).getId() ){
+                        interns.at( i ).setSex( ( option == 'f' ? 0 : 1 ) );
+                    }
+                }
+                for( int i = 0; i < volunteers.size(); i++ ){
+                    if ( id == volunteers.at( i ).getId() ){
+                        volunteers.at( i ).setSex( ( option == 'f' ? 0 : 1 ) );
+                    }
+                }
+                break;
+            case 'p':
+                cout << "Enter new pay rate\n";
+                cin >> fnum;
+                for( int i = 0; i < employees.size(); i++ ){
+                    if ( id == employees.at( i ).getId() ){
+                        employees.at( i ).setPayrate( fnum );
+                    }
+                }
+                for( int i = 0; i < interns.size(); i++ ){
+                    if ( id == interns.at( i ).getId() ){
+                        interns.at( i ).setPayrate( fnum );
+                    }
+                }
+                break;
+            case 'h':
+                cout << "Enter hours\n";
+                cin >> fnum;
+                setHours( id, fnum );
+                break;
+        }
+    }
+    while( option != 'q' );
+    
+    save();       
+}
+
 void Data::setFileName(string s ) {
     fileName = s;
 }
@@ -580,6 +714,31 @@ bool Data::deleteById( int id ) {
     
     //failed to delete by this point
     return false;
+}
+
+/**
+ * checks if the id is use or not
+ * @param id
+ * @return 
+ */
+bool Data::isUnqiueId( int id ){
+    for( int i = 0; i < employees.size(); i++ ){
+        if ( id == employees.at( i ).getId() ){
+            return false;
+        }
+    }
+    for( int i = 0; i < interns.size(); i++ ){
+        if ( id == interns.at( i ).getId() ){
+            return false;
+        }
+    }
+    
+    for( int i = 0; i < volunteers.size(); i++ ){
+        if ( id == volunteers.at( i ).getId() ){
+            return false;
+        }
+    }
+    return true;
 }
 
 int Data::getTotalRecords(){

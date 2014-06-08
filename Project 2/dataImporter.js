@@ -3,8 +3,15 @@
  * http://www.behindthename.com/random/random.php?number=1&gender=both&surname=&randomsurname=yes&all=yes
  */
 
-var run = setInterval( function(){$('#fuck').click(); }, 1000 );
-var stop = setTimeOut( function() { clearInterval( run )}, 1000 * 60 );
+var runInterval = setInterval( function(){$('#fuck').click(); }, 1000 );
+
+function run(){
+    runInterval = setInterval( function(){$('#fuck').click(); }, 1000 );
+}
+function stop(){
+    clearInterval( runInterval );
+}
+
 function rand(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }

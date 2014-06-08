@@ -50,6 +50,8 @@ public:
     void setHours( int, float );
     void getPay( int );
     void printPay( int );
+    void edit( int );
+    bool isUnqiueId( int );
     bool deleteById( int );
     string getFileName();
     vector<Employee> getEmployees();

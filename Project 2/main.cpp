@@ -27,11 +27,12 @@ void search( Data & );
 void searchMenu();
 void hours( Data & );
 void pay( Data & );
+void edit( Data & );
 
 int main( int argc, char** argv ) {
     char option;
     
-    Data data( "save.txt" );
+    Data data( "new.txt" );
     data.load( "lol.txt" );
     
     cout << "Welcome to employee management 1.0\n";
@@ -39,7 +40,6 @@ int main( int argc, char** argv ) {
         menu();
         cout << "Enter an option from the menu\n";
         cin >> option;
-        //option = cin.get();
         
         switch( option ){
             case 'b':
@@ -63,6 +63,9 @@ int main( int argc, char** argv ) {
             case 'p':
                 pay( data );
                 break;
+            case 'e':
+                edit( data );
+                break;
             case 'q':
                 cout << "Bye.\n";
                 break;
@@ -84,6 +87,7 @@ void menu(){
     cout << "Press s ----> Search for an Employee\n";
     cout << "Press h ----> Set Hours for Employees\n";
     cout << "Press p ----> View Payment Info\n";
+    cout << "Press e ----> Edit Employee Info\n";
     cout << "Press q ----> To Quit\n";
 }
 
@@ -92,25 +96,25 @@ void menu(){
  * @param data
  */
 void build( Data &data ){
-    int option = 0;
+    char option;
     do{
         cout << "What type of employee are you added?";
-        cout << "\n\t1 Regular paid employee.\n\t2 Intern.\n\t3 Volunteer\n\t4 Main menu\n";
+        cout << "\nPress e ----> Regular paid employee.\nPress i ----> Intern.\nPress v ----> Volunteer\nPress q ----> Main menu\n";
         cin >> option;
         
         switch ( option ) {
-            case 1:
+            case 'e':
                 buildEmployees( data );
                 break;
-            case 2:
+            case 'i':
                 buildIntern( data );
                 break;
-            case 3:
+            case 'v':
                 buildVolunteer( data );
                 break;
         }
     }
-    while( option != 4 );
+    while( option != 'q' );
     
     data.save();
 }
@@ -124,8 +128,14 @@ void buildEmployees( Data &data ){
     do {
         int inNum;
         float inFloat;
-        cout << "Enter the employees id number: ";
-        cin >> inNum;
+        bool taken;
+        do{
+            cout << "Enter the employees id number: ";
+            cin >> inNum;
+            taken = data.isUnqiueId( inNum );
+            if( !taken ) cout << "That id is being used use another\n";
+        }
+        while( !taken );
         Employee E( inNum );
         
         string temp;
@@ -195,8 +205,14 @@ void buildIntern( Data &data ){
     do {
         int inNum;
         float inFloat;
-        cout << "Enter the interns id number: ";
-        cin >> inNum;
+        bool taken;
+        do{
+            cout << "Enter the interns id number: ";
+            cin >> inNum;
+            taken = data.isUnqiueId( inNum );
+            if( !taken ) cout << "That id is being used use another\n";
+        }
+        while( !taken );
         Intern E( inNum );
         
         string temp;
@@ -279,8 +295,14 @@ void buildVolunteer( Data &data ){
     do {
         int inNum;
         float inFloat;
-        cout << "Enter the volunteers id number: ";
-        cin >> inNum;
+        bool taken;
+        do{
+            cout << "Enter the volunteers id number: ";
+            cin >> inNum;
+            taken = data.isUnqiueId( inNum );
+            if( !taken ) cout << "That id is being used use another\n";
+        }
+        while( !taken );
         Volunteer E( inNum );
         
         string temp;
@@ -507,4 +529,15 @@ void pay( Data &data ){
     cin >> id;
     listHeader( true );
     data.getPay( id );
+}
+
+/**
+ * Edit the employee
+ * @param data
+ */
+void edit( Data &data ){
+    int id;
+    cout << "Enter the id of the employee you want to edit\n";
+    cin >> id;
+    data.edit( id );
 }
