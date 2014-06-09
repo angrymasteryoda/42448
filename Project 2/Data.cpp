@@ -695,12 +695,14 @@ bool Data::deleteById( int id ) {
     for( int i = 0; i < employees.size(); i++ ){
         if ( id == employees.at( i ).getId() ){
             employees.erase( employees.begin() + i );
+            save();
             return true;
         }
     }
     for( int i = 0; i < interns.size(); i++ ){
         if ( id == interns.at( i ).getId() ){
             interns.erase( interns.begin() + i );
+            save();
             return true;
         }
     }
@@ -708,6 +710,7 @@ bool Data::deleteById( int id ) {
     for( int i = 0; i < volunteers.size(); i++ ){
         if ( id == volunteers.at( i ).getId() ){
             volunteers.erase( volunteers.begin() + i );
+            save();
             return true;
         }
     }

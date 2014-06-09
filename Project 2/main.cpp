@@ -516,6 +516,7 @@ void hours( Data &data ){
         while( option != 'y' && option != 'n' );
     }
     while( option != 'n' );
+    data.save();
     
 }
 
