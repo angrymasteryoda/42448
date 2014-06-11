@@ -41,6 +41,7 @@ public:
     void printEmployee( int, bool isPay = false );
     void printIntern( int, bool isPay = false );
     void printVolunteer( int, bool isPay = false );
+    void print( int, int, bool isPay = false);
     void search( int, int num = 0, float fnum = 0 );
     void searchId( int );
     void searchName( string, bool );

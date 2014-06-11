@@ -35,43 +35,46 @@ int main( int argc, char** argv ) {
     Data data( "new.txt" );
     data.load( "lol.txt" );
     
-    cout << "Welcome to employee management 1.0\n";
-    do {
-        menu();
-        cout << "Enter an option from the menu\n";
-        cin >> option;
-        
-        switch( option ){
-            case 'b':
-                build( data );
-                break;
-            case 'l':
-                load( data );
-                break;
-            case 'i':
-                list( data );
-                break;
-            case 'd':
-                deleteEmp( data );
-                break;
-            case 's':
-                search( data );
-                break;
-            case 'h':
-                hours( data );
-                break;
-            case 'p':
-                pay( data );
-                break;
-            case 'e':
-                edit( data );
-                break;
-            case 'q':
-                cout << "Bye.\n";
-                break;
-        }
-    } while( option != 'q' );
-    
+    data.print( 0, 0 );
+    data.print( 0, 1 );
+//    
+//    cout << "Welcome to employee management 1.0\n";
+//    do {
+//        menu();
+//        cout << "Enter an option from the menu\n";
+//        cin >> option;
+//        
+//        switch( option ){
+//            case 'b':
+//                build( data );
+//                break;
+//            case 'l':
+//                load( data );
+//                break;
+//            case 'i':
+//                list( data );
+//                break;
+//            case 'd':
+//                deleteEmp( data );
+//                break;
+//            case 's':
+//                search( data );
+//                break;
+//            case 'h':
+//                hours( data );
+//                break;
+//            case 'p':
+//                pay( data );
+//                break;
+//            case 'e':
+//                edit( data );
+//                break;
+//            case 'q':
+//                cout << "Bye.\n";
+//                break;
+//        }
+//    } while( option != 'q' );
+//    
     return 0;
 }
 

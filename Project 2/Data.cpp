@@ -240,6 +240,47 @@ void Data::printFormatedPerson( int type ){
     }
 }
 
+void Data::print( int index, int type, bool isPay ){
+    Person *p;
+    bool iV = false;
+    if ( type == 0 ){
+        Employee e = employees.at( index );
+        cout << e.toString();
+        p = &e;
+    }
+    else if ( type == 1 ){
+        Intern in = interns.at( index );
+        p = &in;
+    }
+    else if( type == 2 ){
+        Volunteer vol = volunteers.at( index );
+        iV = true;
+        p = &vol;
+    }
+    //*
+    cout << '|'<< setw( 6 ) << p->getId() << " |" <<
+        setw( 18 ) << p->getFname() << " |" << 
+        setw( 18 ) << p->getLname() << " |"; 
+    if ( !isPay ) {
+        cout << setw( 4 ) << p->getAge() << " |" << 
+        setw( 4 ) << p->getSexLetter() << " |";
+        if( iV ){
+            cout << setw( 9 ) << 0 << " |";
+        }
+        else{
+            if( type == 0 ) {
+                cout << setw( 9 ) << employees.at(index ).getPayrate() << " |";
+                cout << setw( 6 ) << employees.at(index ).getHours() << " |";
+            }
+            else if( type == 1 ){
+                cout << setw( 9 ) << interns.at(index ).getPayrate() << " |";
+                cout << setw( 6 ) << interns.at(index ).getHours() << " |";
+            }
+        }
+    }
+    //*/
+}
+
 /**
  * print out a single employee
  * @param index
