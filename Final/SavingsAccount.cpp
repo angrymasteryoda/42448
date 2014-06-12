@@ -58,18 +58,3 @@ float SavingsAccount::Withdraw(float amt) {
 void SavingsAccount::toString(){
     cout << "Balance: " << Balance << " FreqWithdraws: " << FreqWithDraw << " FreqDeposit: " << FreqDeposit << endl;
 }
-
-
-/*
-SavingsAccount( float );               //Constructor
-    void  Transaction( float );            //Procedure
-    float Total( float=0, int=0 );	         //Savings Procedure
-    float TotalRecursive( float=0, int=0 );
-    void  toString();                    //Output Properties
-private:
-    float Withdraw( float );               //Utility Procedure
-    float Deposit( float );                //Utility Procedure
-    float Balance;                       //Property
-    int   FreqWithDraw;                  //Property
-    int   FreqDeposit;       
-    */

@@ -16,8 +16,11 @@
       <itemPath>Employee.h</itemPath>
       <itemPath>Prob1Random.cpp</itemPath>
       <itemPath>Prob1Random.h</itemPath>
-      <itemPath>Prob2Sort.cpp</itemPath>
       <itemPath>Prob2Sort.h</itemPath>
+      <itemPath>Prob3Table.cpp</itemPath>
+      <itemPath>Prob3Table.h</itemPath>
+      <itemPath>Prob3TableInherited.cpp</itemPath>
+      <itemPath>Prob3TableInherited.h</itemPath>
       <itemPath>SavingsAccount.cpp</itemPath>
       <itemPath>SavingsAccount.h</itemPath>
       <itemPath>main.cpp</itemPath>

@@ -14,6 +14,7 @@
 #include "Prob2Sort.h"
 #include "Employee.h"
 #include "SavingsAccount.h"
+#include "Prob3TableInherited.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ void p5();
 int main( int argc, char** argv ) {
     srand( time( NULL ) );
     int input;    
-    p4();
+    p2();
     return 0;
     do{
         menu();
@@ -35,7 +36,7 @@ int main( int argc, char** argv ) {
         
         switch( input ){
             case 1:
-//                p1();
+                p1();
                 break;
             case 2:
                 //p2()
@@ -89,33 +90,57 @@ void p1(){
 }   
 
 void p2(){
-//    cout << "The start of Problem 2, the sorting problem" << endl;
-//    Prob2Sort<char> rc;
-//    bool ascending = true;
-//    ifstream infile;
-//    infile.open( "Problem2.txt", ios::in );
-//    char *ch2 = new char[10*16];
-//    char *ch2p = ch2;
-//    while( infile.get( *ch2 ) ) {
-//        cout << *ch2;
-//        ch2++;
-//    }
-//    infile.close();
-//    cout << endl;
-//    cout << "Sorting on which column"<<endl;
-//    int column;
-//    cin >> column;
-//    char *zc = rc.sortArray( ch2p, 10, 16, column, ascending);
+    cout << "The start of Problem 2, the sorting problem" << endl;
+    Prob2Sort<char> rc;
+    bool ascending = true;
+    ifstream infile;
+    infile.open( "Problem2.txt", ios::in );
+    char *ch2 = new char[10*17];
+    char *ch2p = ch2;
+    while( infile.get( *ch2 ) ) {
+        cout << *ch2;
+        ch2++;
+    }
+    infile.close();
+    cout << endl;
+    cout << "abcdefghijklmnopqrstuvwxyz" << endl;
+    cout << "Sorting on which column"<<endl;
+    int column;
+    cin >> column;
+//    int *zc = rc.sortArray( ch2p, 10, 17, column, ascending);
 //    for(int i = 0; i < 10; i++ ) {
-//        for(int j = 0; j < 16; j++ ) {
-//            cout << zc[i*16+j];
-//        }
+//        cout << zc[i] << ", ";
 //    }
-//    delete []zc;
-//    cout << endl;
+    char *zc = rc.sortArray( ch2p, 10, 17, column, ascending);
+    for(int i = 0; i < 10; i++ ) {
+        for(int j = 0; j < 17; j++ ) {
+            cout << zc[ j + ( 17 * i ) ];
+        }
+    }
+    delete []zc;
+    cout << endl;
 }
 
 void p3(){
+//    cout<<"Entering problem number 3"<<endl;
+//    int rows=5;
+//    int cols=6;
+//    Prob3TableInherited<int> tab("Problem3.txt",rows,cols);
+//    const int *naugT=tab.getTable();
+//    for(int i=0;i<rows;i++) {
+//        for(int j=0;j<cols;j++) {
+//                cout<<naugT[i*cols+j]<<" ";
+//        }
+//        cout<<endl;
+//    }
+//    cout<<endl;
+//    const int *augT=tab.getAugTable();
+//    for(int i=0;i<=rows;i++) {
+//        for(int j=0;j<=cols;j++) {
+//                cout<<augT[i*(cols+1)+j]<<" ";
+//        }
+//        cout<<endl;
+//    }
 }
 
 void p4(){

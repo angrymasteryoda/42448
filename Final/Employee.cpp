@@ -20,15 +20,15 @@ Employee::Employee( char name[] , char job[] , float rate ){
 
 float Employee::Tax( float p ){
     if ( p <= 500.0 ) {
-      p -= p * 0.1;
+        p -= p * 0.1;
     }
     else if ( (p <= 1000.0 ) && ( p > 500.0 ) ) {
-      float r = 50.0 + (p - 500.0 ) * 0.2;
-      p -= r;
+        float r = 50.0 + (p - 500.0 ) * 0.2;
+        p -= r;
     }
     else {
-      float r = 150.0 + ( p - 1000.0 ) * 0.3;
-      p -= r;
+        float r = 150.0 + ( p - 1000.0 ) * 0.3;
+        p -= r;
     }
     return p;
 }

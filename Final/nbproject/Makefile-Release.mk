@@ -35,9 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Prob3TableInherited.o \
+	${OBJECTDIR}/Prob3Table.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/Employee.o \
-	${OBJECTDIR}/Prob2Sort.o \
 	${OBJECTDIR}/Prob1Random.o \
 	${OBJECTDIR}/SavingsAccount.o
 
@@ -66,6 +67,16 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/final.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/final ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/Prob3TableInherited.o: Prob3TableInherited.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Prob3TableInherited.o Prob3TableInherited.cpp
+
+${OBJECTDIR}/Prob3Table.o: Prob3Table.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Prob3Table.o Prob3Table.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -75,11 +86,6 @@ ${OBJECTDIR}/Employee.o: Employee.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Employee.o Employee.cpp
-
-${OBJECTDIR}/Prob2Sort.o: Prob2Sort.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Prob2Sort.o Prob2Sort.cpp
 
 ${OBJECTDIR}/Prob1Random.o: Prob1Random.cpp 
 	${MKDIR} -p ${OBJECTDIR}
