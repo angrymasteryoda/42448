@@ -27,9 +27,7 @@ void p5();
 
 int main( int argc, char** argv ) {
     srand( time( NULL ) );
-    int input;    
-    p2();
-    return 0;
+    int input = 0;    
     do{
         menu();
         cin >> input;
@@ -39,7 +37,7 @@ int main( int argc, char** argv ) {
                 p1();
                 break;
             case 2:
-                //p2()
+                p2();
                 break;
             case 3:
                 p3();
@@ -122,25 +120,26 @@ void p2(){
 }
 
 void p3(){
-//    cout<<"Entering problem number 3"<<endl;
-//    int rows=5;
-//    int cols=6;
-//    Prob3TableInherited<int> tab("Problem3.txt",rows,cols);
-//    const int *naugT=tab.getTable();
-//    for(int i=0;i<rows;i++) {
-//        for(int j=0;j<cols;j++) {
-//                cout<<naugT[i*cols+j]<<" ";
-//        }
-//        cout<<endl;
-//    }
-//    cout<<endl;
-//    const int *augT=tab.getAugTable();
-//    for(int i=0;i<=rows;i++) {
-//        for(int j=0;j<=cols;j++) {
-//                cout<<augT[i*(cols+1)+j]<<" ";
-//        }
-//        cout<<endl;
-//    }
+    cout<<"Entering problem number 3"<<endl;
+    int rows=5;
+    int cols=6;
+//    Prob3Table<int> tab("Problem3.txt",rows,cols);
+    Prob3TableInherited<int> tab("Problem3.txt",rows,cols);
+    const int *naugT=tab.getTable();
+    for(int i=0;i<rows;i++) {
+        for(int j=0;j<cols;j++) {
+                cout<<naugT[i*cols+j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+    const int *augT=tab.getAugTable();
+    for(int i=0;i<=rows;i++) {
+        for(int j=0;j<=cols;j++) {
+                cout<<augT[i*(cols+1)+j]<<" ";
+        }
+        cout<<endl;
+    }
 }
 
 void p4(){
