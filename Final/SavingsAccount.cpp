@@ -50,6 +50,9 @@ float SavingsAccount::Deposit( float amt ){
 }
 
 float SavingsAccount::Withdraw(float amt) {
+    if( Balance <= 0 ){
+        cout << "WithDraw not Allowed\n";
+    }
     FreqWithDraw++;
     Balance-= amt;
     return Balance;

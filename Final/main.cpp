@@ -19,6 +19,7 @@
 using namespace std;
 
 void menu();
+void extra();
 void p1();
 void p2();
 void p3();
@@ -28,6 +29,8 @@ void p5();
 int main( int argc, char** argv ) {
     srand( time( NULL ) );
     int input = 0;    
+    cout << "did the extra credit conversion\n";
+    extra();
     do{
         menu();
         cin >> input;
@@ -55,6 +58,30 @@ int main( int argc, char** argv ) {
     }
     while( input != 6);
     return 0;
+}
+void extra(){
+cout << "23.76" << endl;
+cout << "23 %16 = 7" << endl;
+cout << "23/2 % 16 = 11" << endl;
+cout << "    " << endl;
+cout << "7B" << endl;
+cout << "" << endl;
+cout << "  .76 * 16 = 12.16" << endl;
+cout << "  .16 * 16 = 2.56" << endl;
+cout << "  .96 * 16 = 15.36" << endl;
+cout << "  .36 * 16 = 5.76" << endl;
+cout << "  " << endl;
+cout << "7B.C2F5" << endl;
+cout << "   ----" << endl;
+cout << "111 1010. 1100 0010 1111 0101   " << endl;
+cout << ".11110101100001011110101 * 2^7" << endl;
+cout << "" << endl;
+cout << "0111 1010 1100 0010 1111 0101 0000 0111" << endl;
+cout << "----|---- ----|---- ----|---- ----|----" << endl;
+cout << "" << endl;
+cout << "7    B    C    2    F    5    0    7" << endl;
+cout << "" << endl;
+cout << "0x7BC2F507" << endl;
 }
 
 void menu(){
@@ -101,7 +128,6 @@ void p2(){
     }
     infile.close();
     cout << endl;
-    cout << "abcdefghijklmnopqrstuvwxyz" << endl;
     cout << "Sorting on which column"<<endl;
     int column;
     cin >> column;
